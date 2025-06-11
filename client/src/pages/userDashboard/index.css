@@ -1,0 +1,168 @@
+/* Layout */
+.cvb-dashboard-container {
+  display: flex;
+  height: 100vh;
+  background: #f7f8fc;
+}
+
+/* Sidebar */
+.cvb-sidebar {
+  width: 220px;
+  background-color: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 1.5rem;
+}
+
+.cvb-sidebar-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #4a00e0;
+  margin-bottom: 2rem;
+}
+
+.cvb-sidebar-nav a {
+  display: block;
+  margin: 1rem 0;
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.cvb-sidebar-nav a:hover {
+  color: #4a00e0;
+}
+
+/* Main Section */
+.cvb-dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Topbar */
+.cvb-dashboard-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  background-image: linear-gradient(to right,#f7440e, #da5bf3);
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+
+.cvb-dashboard-welcome h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.cvb-dashboard-welcome p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.cvb-dashboard-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* CV Section */
+.cvb-cv-section {
+  margin-top: 2rem;
+}
+
+.cvb-cv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.cvb-cv-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cvb-cv-card:hover {
+  transform: translateY(-5px);
+}
+
+.cvb-cv-thumbnail {
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: #fff;
+  height: 160px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.cvb-cv-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.cvb-cv-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cvb-cv-actions button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background: #4a00e0;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cvb-cv-actions button:hover {
+  background: #8e2de2;
+}
+
+.cvb-cv-add-new {
+  background-color: #f4f6ff;
+  text-align: center;
+  color: #4a00e0;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.cvb-cv-add-new p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+
+.user-forms-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.user-form-btn{
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #4a00e0;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+}
