@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { addProjects } from '../../api/resumeDetailsApi';
 import './index.css';
 
-const ProjectsForm = () => {
+const ProjectsForm = ({userId}) => {
   const [projects, setProjects] = useState([
     {
       projectTitle: '',
@@ -28,16 +29,24 @@ const ProjectsForm = () => {
     setProjects(updatedProjects);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submitted project data:', projects);
-    // you can send this data to a backend or parent component
+  const handleSubmit = async () => {
+    try {
+      const response = await addProjects(userId, projects);
+      if (response.ok) {
+        alert("Projects added successfully!");
+      } else {
+        alert(response.message || "Failed to add projects");
+      }
+    } catch (error) {
+      console.error('Error saving projects:', error);
+    }
+    console.log('Submitted projects:', projects);    
   };
 
   return (
     <div className="cvb-edu-form-container">
       <h2 className="cvb-edu-form-title">Projects</h2>
-      <form className="cvb-edu-form" onSubmit={handleSubmit}>
+      <form className="cvb-edu-form">
         {projects.map((project, index) => (
           <div key={index} className="cvb-edu-form-block">
             <div className="cvb-edu-form-block-header">
@@ -96,7 +105,7 @@ const ProjectsForm = () => {
           ➕ Add New Project
         </button>
       </form>
-      <button type="button" className="cvb-edu-submit-btn">
+      <button type="button" onClick={handleSubmit} className="cvb-edu-submit-btn">
           Save Projects
         </button>
     </div>

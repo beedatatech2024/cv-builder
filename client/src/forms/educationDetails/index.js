@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { addEducationDetails } from '../../api/resumeDetailsApi';
 import './index.css';
 
-const EducationDetailsForm = () => {
+const EducationDetailsForm = ({userId}) => {
   const [educations, setEducations] = useState([
     { institution: '', degree: '', field: '', percentage: '', startDate: '', endDate: '' },
   ]);
@@ -24,9 +25,17 @@ const EducationDetailsForm = () => {
     setEducations(newEducations);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submitted education data:', educations);
+  const handleSubmit = async() => {
+    console.log('Submitting education details:', educations);
+    
+   const response = await addEducationDetails(userId, educations);
+    if (response.ok) {
+      alert("Education details added successfully!");
+    } else {
+      alert(response.message || "Failed to add education details");
+    }
+    console.log('Submitted education details:', educations);
+
   };
 
   return (
@@ -127,7 +136,7 @@ const EducationDetailsForm = () => {
           ➕ Add New Degree
         </button>
       </form>
-      <button type="button"  onSubmit={handleSubmit} className="cvb-edu-submit-btn">
+      <button type="button"  onClick={handleSubmit} className="cvb-edu-submit-btn">
           Save Education Details
         </button>
     </div>

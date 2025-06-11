@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './index.css';
+import { addExperienceDetails } from '../../api/resumeDetailsApi';
 
-const ExperienceForm = () => {
+const ExperienceForm = ({userId}) => {
   const [experiences, setExperiences] = useState([
     {
       companyName: '',
@@ -30,16 +31,24 @@ const ExperienceForm = () => {
     setExperiences(newExperiences);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submitted experience data:', experiences);
-    // send to backend or parent component
+  const handleSubmit = async () => {
+    try {
+      const response = await addExperienceDetails(userId, experiences);
+      if (response.ok) {
+        alert("Experience details added successfully!");
+      } else {
+        alert(response.message || "Failed to add experience details");
+      }
+    } catch (error) {
+      console.error('Error saving experience details:', error);
+    }
+    console.log('Submitted experience details:', experiences);
   };
 
   return (
     <div className="cvb-edu-form-container">
       <h2 className="cvb-edu-form-title">Experience</h2>
-      <form className="cvb-edu-form" onSubmit={handleSubmit}>
+      <form className="cvb-edu-form">
         {experiences.map((exp, index) => (
           <div key={index} className="cvb-edu-form-block">
             <div className="cvb-edu-form-block-header">
@@ -121,11 +130,10 @@ const ExperienceForm = () => {
         <button type="button" className="cvb-edu-add-btn" onClick={handleAddExperience}>
           ➕ Add New Experience
         </button>
-
-        <button type="submit" className="cvb-edu-submit-btn">
+      </form>
+       <button type="button" onClick={handleSubmit} className="cvb-edu-submit-btn">
           Save Experience
         </button>
-      </form>
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './index.css';
+import { addPersonalDetails } from '../../api/resumeDetailsApi';
 
-const PersonalInfoForm = () => {
+const PersonalInfoForm = ({userId, onClose}) => {
   const [personalInfo, setPersonalInfo] = useState({
     fullName: '',
     phone: '',
@@ -15,9 +16,20 @@ const PersonalInfoForm = () => {
     setPersonalInfo({ ...personalInfo, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Submitted personal information:', personalInfo);
+  const handleSubmit = async () => {
+    try {
+      const response = await addPersonalDetails(userId, personalInfo);
+      if (response.ok) {
+        alert("Personal information added successfully!");
+        onClose();
+      } else {
+        alert(response.message || "Failed to add offer");
+      }
+    }
+    catch (error) {
+      console.error('Error saving personal information:', error);
+    }
+      
     
   };
 
@@ -95,7 +107,7 @@ const PersonalInfoForm = () => {
           />
         </div>
       </form>
-      <button type="button" className="cvb-edu-submit-btn">
+      <button type="button" onClick={handleSubmit} className="cvb-edu-submit-btn">
           Save Personal Info
         </button>
     </div>
