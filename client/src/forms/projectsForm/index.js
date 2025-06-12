@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addProjects } from '../../api/resumeDetailsApi';
+import { addProjectsDetails } from '../../api/cvDetailsApi';
 import './index.css';
 
 const ProjectsForm = ({userId}) => {
@@ -31,7 +31,7 @@ const ProjectsForm = ({userId}) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await addProjects(userId, projects);
+      const response = await addProjectsDetails(userId, projects);
       if (response.ok) {
         alert("Projects added successfully!");
       } else {

@@ -67,3 +67,32 @@ export const addProjectsDetails = async (userId, projectsDetails) => {
     throw error.response?.data || error;
   }
 };
+
+
+export const getCVDetails = async (userId) => {
+  try {
+    const response = await axiosInstance.get(`/cv/${userId}`);
+    console.log("CV Details Response:", response.data);
+    
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Get CV Details Error:",
+      error.response?.data?.message || error.message
+    );
+    throw error.response?.data || error;
+  }
+};
+
+export const getCVProgress = async (userId) => {
+  try {
+    const response = await axiosInstance.get(`/cv/progress/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Get CV Progress Error:",
+      error.response?.data?.message || error.message
+    );
+    throw error.response?.data || error;
+  }
+}

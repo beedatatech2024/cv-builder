@@ -23,15 +23,12 @@
   overflow-y: auto;
   flex-grow: 1;
   padding-right: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .cvb-edu-form::-webkit-scrollbar {
-  width: 8px;
-}
-
-.cvb-edu-form::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
+  display: none;
 }
 
 .cvb-edu-form-group {

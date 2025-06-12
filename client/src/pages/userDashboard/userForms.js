@@ -35,7 +35,7 @@ const UserForms = () => {
       <button className="user-form-btn" onClick={() => setIsOpenPopup("educationDetails")}>Add Education Details</button>
       <button className="user-form-btn" onClick={() => setIsOpenPopup("skills")}>Add Skills</button>
       <button className="user-form-btn" onClick={() => setIsOpenPopup("experience")}>Add Experience</button>
-      <button className="user-form-btn" onClick={() => setIsOpenPopup("achievements")}>Add Achievements</button>
+      {/* <button className="user-form-btn" onClick={() => setIsOpenPopup("achievements")}>Add Achievements</button> */}
       <button className="user-form-btn" onClick={() => setIsOpenPopup("projects")}>Add Projects</button>
       {isOpenPopup && (
         <div className="cvb-login-popup-overlay">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
-import { addExperienceDetails } from '../../api/resumeDetailsApi';
+import { addExperienceDetails } from '../../api/cvDetailsApi';
 
 const ExperienceForm = ({userId}) => {
   const [experiences, setExperiences] = useState([

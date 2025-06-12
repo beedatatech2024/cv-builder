@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { addSkillsDetails } from '../../api/cvDetailsApi';
 import './index.css';
 
-const SkillsForm = () => {
+const SkillsForm = ({userId}) => {
   const [skills, setSkills] = useState([{ skill_name: '', level: '' }]);
 
   const handleChange = (index, e) => {
@@ -19,15 +20,25 @@ const SkillsForm = () => {
     setSkills(newSkills);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    try {
+      const response = await addSkillsDetails(userId, skills);
+      if (response.ok) {
+        alert("Skills added successfully!");
+      } else {
+        alert(response.message || "Failed to add skills");
+      }
+    } catch (error) {
+      console.error('Error saving skills:', error);
+    }
     console.log('Submitted skills:', skills);
+    
   };
 
   return (
     <div className="cvb-edu-form-container">
       <h2 className="cvb-edu-form-title">Skills</h2>
-      <form className="cvb-edu-form" onSubmit={handleSubmit}>
+      <form className="cvb-edu-form">
         {skills.map((skill, index) => (
           <div key={index} className="cvb-edu-form-block">
             <div className="cvb-edu-form-block-header">
@@ -75,7 +86,7 @@ const SkillsForm = () => {
           ➕ Add New Skill
         </button>
       </form>
-      <button type="button" className="cvb-edu-submit-btn">
+      <button type="button" onClick={handleSubmit} className="cvb-edu-submit-btn">
           Save Skills
         </button>
     </div>

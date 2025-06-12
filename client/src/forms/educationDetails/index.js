@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addEducationDetails } from '../../api/resumeDetailsApi';
+import { addEducationDetails } from '../../api/cvDetailsApi';
 import './index.css';
 
 const EducationDetailsForm = ({userId}) => {

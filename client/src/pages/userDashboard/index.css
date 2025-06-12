@@ -5,32 +5,10 @@
   background: #f7f8fc;
 }
 
-/* Sidebar */
-.cvb-sidebar {
-  width: 220px;
-  background-color: #ffffff;
-  border-right: 1px solid #ddd;
-  padding: 1.5rem;
-}
-
-.cvb-sidebar-logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #4a00e0;
-  margin-bottom: 2rem;
-}
-
-.cvb-sidebar-nav a {
-  display: block;
-  margin: 1rem 0;
-  color: #333;
-  font-weight: 500;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.cvb-sidebar-nav a:hover {
-  color: #4a00e0;
+.cvb-cv-details {
+  display: flex;
+  height: 80vh;
+  background: #f7f8fc;
 }
 
 /* Main Section */
@@ -38,34 +16,6 @@
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
-}
-
-/* Topbar */
-.cvb-dashboard-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #ffffff;
-  background-image: linear-gradient(to right,#f7440e, #da5bf3);
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-bottom: 2rem;
-}
-
-.cvb-dashboard-welcome h2 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-.cvb-dashboard-welcome p {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.cvb-dashboard-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 
 /* CV Section */
@@ -164,5 +114,16 @@
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;
-
 }
+
+
+
+/* Create CV Builder Page */
+
+
+
+
+
+
+/* CV Preview Page */
+

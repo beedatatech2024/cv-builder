@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
-import { addPersonalDetails } from '../../api/resumeDetailsApi';
+import { addPersonalDetails } from '../../api/cvDetailsApi';
 
 const PersonalInfoForm = ({userId, onClose}) => {
   const [personalInfo, setPersonalInfo] = useState({
@@ -10,6 +10,8 @@ const PersonalInfoForm = ({userId, onClose}) => {
     summary: '',
     linkedin: '',
     github: '',
+    portfolio: '',
+    declaration: '',
   });
 
   const handleChange = (e) => {
@@ -104,6 +106,27 @@ const PersonalInfoForm = ({userId, onClose}) => {
             placeholder="https://github.com/yourusername"
             value={personalInfo.github}
             onChange={handleChange}
+          />
+        </div>
+        <div className="cvb-edu-form-group">
+          <label>Portfolio</label>
+          <input
+            type="url"
+            name="portfolio"
+            placeholder="https://www.yourdomain.com/"
+            value={personalInfo.portfolio}
+            onChange={handleChange}
+          />
+        </div>
+         <div className="cvb-edu-form-group">
+          <label>Declaration</label>
+          <textarea
+            name="declaration"
+            placeholder="Write a short declaration about yourself"
+            value={personalInfo.declaration}
+            onChange={handleChange}
+            rows="4"
+            required
           />
         </div>
       </form>
