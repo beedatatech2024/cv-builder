@@ -4,6 +4,7 @@ import './index.css';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
 import CVDetails from './cvDetails';
+import CVTamplates from './cvTamplates';
 
 const UserDashboard = () => {
   return (
@@ -14,7 +15,7 @@ const UserDashboard = () => {
         <Routes>
           <Route path="/" element={<h2>Welcome to your dashboard!</h2>} />
           <Route path="/my-cvs" element={<CVDetails />} />
-          <Route path="/templates" element={<h2>Templates</h2>} />
+          <Route path="/templates" element={<CVTamplates />} />
           <Route path="/create-cv" element={<h2>Create CV</h2>} />
           <Route path="/details" element={<CVDetails />} />
         </Routes>

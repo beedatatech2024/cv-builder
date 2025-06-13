@@ -12,6 +12,7 @@
     "create-react-app": "^5.1.0",
     "docx": "^9.5.0",
     "file-saver": "^2.0.5",
+    "html2pdf": "^0.0.11",
     "html2pdf.js": "^0.10.3",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",

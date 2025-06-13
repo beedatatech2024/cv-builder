@@ -3,6 +3,8 @@
   background-color: #ffffff;
   border-right: 1px solid #ddd;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .cvb-sidebar-logo {
@@ -10,6 +12,14 @@
   font-weight: bold;
   color: #4a00e0;
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.cvb-sidebar-logo-img{
+  width: 40px;
+  height: auto;
+  margin-right: 0.5rem;
 }
 
 .cvb-sidebar-nav-link {
@@ -23,6 +33,18 @@
 
 .cvb-sidebar-nav-link:hover {
   color: #4a00e0;
+}
+
+.cvb-sidebar-nav-logout-button{
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s;
+  margin-top: auto;
 }
 
 

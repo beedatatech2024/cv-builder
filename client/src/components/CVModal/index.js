@@ -91,7 +91,7 @@ const CVModal = () => {
             ["Education Details", "education"],
             ["Skills", "skills"],
             ["Experience", "experience"],
-            ["Projects", "projects"],
+            ["Projects", "projects"],    
           ].map(([label, key]) => (
             <div key={key} className="cvb-cv-section-card">
               <div className="cvb-cv-section-top">
