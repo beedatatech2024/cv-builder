@@ -133,13 +133,23 @@
   color: #4a00e0;
   font-size: 2rem;
   font-weight: 600;
+  padding: 0px;
+  margin: 0px;
 }
 
 .cvb-templates-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 0px;
+  overflow-y: auto;
+  height: 70vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+} 
+
+.cvb-templates-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .cvb-template-card{
@@ -163,7 +173,7 @@
   background-color: #4a00e0;
   color: #fff;
   border: none;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 1rem;
   border-radius: 4px;
   width: 100%;
   cursor: pointer;

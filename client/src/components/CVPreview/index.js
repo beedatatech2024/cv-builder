@@ -11,7 +11,6 @@ const CVPreview = ({ userId }) => {
   const handleDownloadPDF = () => {
     if (!cvData) return;
     const { personal } = cvData;
-
     const element = cvRef.current;
     const opt = {
       margin: 0.1,
