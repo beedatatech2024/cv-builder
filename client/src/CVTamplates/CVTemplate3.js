@@ -1,25 +1,9 @@
 import React from "react";
+import { getYear, convertDate } from "../utils/DateModifications";
 import "./styles/CVTemplate3.css";
 
-const CVTemplate3 = ({data}) => {
-  const {personal, education, skills, experience, projects} = data
-
-  const getYear = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    return year;
-  };
-
-  const convertDate = (dateString) => {
-    const date = new Date(dateString);
-    const formattedDate = date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-    return formattedDate;
-  };
-
+const CVTemplate3 = ({cvData}) => {
+  const {personal, education, skills, experience, projects} = cvData
 
   return (
     <div className="cvb-william-resume">

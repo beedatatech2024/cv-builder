@@ -3,6 +3,7 @@
   display: flex;
   height: 100vh;
   background: #f7f8fc;
+  width: 100vw;
 }
 
 .cvb-cv-details {

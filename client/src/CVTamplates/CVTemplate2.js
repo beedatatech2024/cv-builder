@@ -1,28 +1,13 @@
 import React from "react";
+import { getYear, convertDate } from "../utils/DateModifications";
 import "./styles/CVTemplate2.css";
 import {
   FaFacebookF, FaInstagram, FaTwitter, FaBehance,
   FaPhoneAlt, FaGlobe, FaMapMarkerAlt
 } from "react-icons/fa";
 
-const CVTemplate2 = ({data}) => {
-  const {personal, education, skills, experience, projects} = data
-
-  const getYear = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    return year;
-  };
-
-  const convertDate = (dateString) => {
-    const date = new Date(dateString);
-    const formattedDate = date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-    return formattedDate;
-  };
+const CVTemplate2 = ({cvData}) => {
+  const {personal, education, skills, experience, projects} = cvData
   return (
     <div className="cvb-second-resume-a4">
       <div className="cvb-second-header">

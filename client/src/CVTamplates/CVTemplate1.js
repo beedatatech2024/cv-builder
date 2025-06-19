@@ -1,27 +1,10 @@
 
 import React from "react";
+import { getYear, convertDate } from "../utils/DateModifications";
 import "./styles/CVTemplate1.css";
 
-const CVTemplate1 = ({data}) => {
-  console.log(data);
-  
-  const {personal, education, skills, experience, projects} = data
-
-  const getYear = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    return year;
-  };
-
-  const convertDate = (dateString) => {
-    const date = new Date(dateString);
-    const formattedDate = date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-    return formattedDate;
-  };
+const CVTemplate1 = ({cvData}) => {
+  const {personal, education, skills, experience, projects} = cvData
   
   return (
     <div className="cvb-template1-container">
