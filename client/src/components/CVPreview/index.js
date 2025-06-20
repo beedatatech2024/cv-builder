@@ -10,9 +10,21 @@ import CVTemplate3 from "../../CVTamplates/CVTemplate3";
 import CVTemplate4 from "../../CVTamplates/CVTemplate4";
 import CVTemplate from "../../CVTamplates/CVTemplate";
 
-const CVPreview = ({ cvData, selectedTemplate }) => {
-  const [selectData, setSelectData] = useState(cvData);
+const CVPreview = ({ cvData, selectedTemplate, onSelectTemplate }) => {
+  const [selectData, setSelectData] = useState(null);
+  const [showForm, setShowForm] = useState(false);
   const cvRef = useRef();
+  const formRef = useRef();
+
+  useEffect(() => {
+    if (cvData) setSelectData(cvData);
+  }, [cvData]);
+
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [showForm]);
 
   const handleDownloadPDF = () => {
     if (!selectData?.personal) return;
@@ -30,44 +42,59 @@ const CVPreview = ({ cvData, selectedTemplate }) => {
   };
 
   const handleSelectionComplete = (filteredCVData) => {
+    
+    setShowForm(!showForm);
     setSelectData(filteredCVData);
   };
 
   const renderTemplates = () => {
     switch (selectedTemplate) {
-      case "cv":
-        return <CVTemplate cvData={selectData} />;
-      case "cv1":
-        return <CVTemplate1 cvData={selectData} />;
-      case "cv2":
-        return <CVTemplate2 cvData={selectData} />;
-      case "cv3":
-        return <CVTemplate3 cvData={selectData} />;
-      case "cv4":
-        return <CVTemplate4 cvData={selectData} />;
-      default:
-        return <div>No template selected.</div>;
+      case "cv": return <CVTemplate cvData={selectData} />;
+      case "cv1": return <CVTemplate1 cvData={selectData} />;
+      case "cv2": return <CVTemplate2 cvData={selectData} />;
+      case "cv3": return <CVTemplate3 cvData={selectData} />;
+      case "cv4": return <CVTemplate4 cvData={selectData} />;
+      default: return <div>No template selected.</div>;
     }
   };
 
   return (
     <div className="cvb-preview-main-container">
-      {cvData && (
+      {selectData && (
         <>
-        <div className="cvb-preview-container1">
-          {/* Selector with smooth animation */}
-          {/* <div className="cvb-section-selector-wrapper">
-            <CVSectionSelector cvData={cvData} onSelectionComplete={handleSelectionComplete} />
-          </div> */}
+        <div className="cvb-preview-header">
+          <button onClick={() => onSelectTemplate()} className="cvb-template-back-button">Back</button>
+          <button
+            className="cvb-toggle-button"
+            onClick={() => setShowForm(!showForm)}
+          >
+            {showForm ? "Hide" : "Show"} Section Form
+          </button>
 
-          {/* Resume Preview */}
-          <div className="cvb-template-preview-wrapper" ref={cvRef}>
-            {renderTemplates()}
           </div>
-    </div>
 
+          <div className="cvb-preview-container1">
+            {(
+              <div
+                ref={formRef}
+                className={`cvb-section-selector-wrapper ${
+                  showForm ? "cvb-slide-down" : "cvb-slide-up"
+                }`}
+              >
+                {showForm && (
+                  <CVSectionSelector
+                    cvData={cvData}
+                    onSelectionComplete={handleSelectionComplete}
+                  />
+                )}
+              </div>
+            )}
 
-          {/* Download Buttons */}
+            {!showForm && <div className="cvb-template-preview-wrapper" ref={cvRef}>
+              {renderTemplates()}
+            </div>}
+          </div>
+
           <div className="cvb-download-buttons animated-buttons">
             <button className="cvb-btn pdf" onClick={handleDownloadPDF}>
               📄 Download as PDF

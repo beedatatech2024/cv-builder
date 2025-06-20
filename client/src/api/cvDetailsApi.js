@@ -68,6 +68,70 @@ export const addProjectsDetails = async (userId, projectsDetails) => {
   }
 };
 
+export const addCertificationDetails = async (userId, certificationsDetails) => {
+  try {
+    const response = await axiosInstance.post(`/cv/certifications/${userId}`, certificationsDetails);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Certifications Error:",
+      error.response?.data?.message || error.message
+    );
+    throw error.response?.data || error;
+  }
+}
+
+export const addAchievementDetails = async (userId, achievementsDetails) => {
+  try {
+    const response = await axiosInstance.post(`/cv/achievements/${userId}`, achievementsDetails);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Achievements Error:",
+      error.response?.data?.message || error.message
+    );
+    throw error.response?.data || error;
+  }
+}
+
+export const addExtracurricularActivitiesDetails = async (userId, activitiesDetails) => {
+  try {
+    const response = await axiosInstance.post(`/cv/activities/${userId}`, activitiesDetails);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Activities Error:",
+      error.response?.data?.message || error.message
+    );
+    throw error.response?.data || error;
+  }
+}
+
+export const addRefferencesInfoDetails = async (userId, referencesDetails) => {
+  try {
+    const response = await axiosInstance.post(`/cv/references/${userId}`, referencesDetails);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "References Error:",
+      error.response?.data?.message || error.message
+    );
+    throw error.response?.data || error;
+  }
+}
+
+export const addHobbies = async (userId, hobbiesDetails) => {
+  try {
+    const response = await axiosInstance.post(`/cv/hobbies/${userId}`, hobbiesDetails);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Hobbies Error:",
+      error.response?.data?.message || error.message
+    );
+    throw error.response?.data || error;
+  }
+}
 
 export const getCVDetails = async (userId) => {
   try {

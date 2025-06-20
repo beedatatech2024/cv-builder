@@ -3,13 +3,11 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f1f1f1;
 }
 
 .cvb-second-resume-a4 {
   width: 210mm;
   min-height: 297mm;
-  margin: auto;
   background: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   display: flex;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CVTamplates from "../../pages/userDashboard/cvTamplates";
 import CVPreview from "../CVPreview";
 
@@ -10,7 +10,7 @@ const CVBuilderPage = ({cvData}) => {
       {!selectedTemplate ? (
         <CVTamplates onSelectTemplate={(template) => setSelectedTemplate(template)} />
       ) : (
-        <CVPreview cvData={cvData} selectedTemplate={selectedTemplate} />
+        <CVPreview cvData={cvData} onSelectTemplate={() => setSelectedTemplate(null)} selectedTemplate={selectedTemplate} />
       )}
     </div>
   );

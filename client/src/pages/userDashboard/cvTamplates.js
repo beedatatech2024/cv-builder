@@ -3,6 +3,7 @@ import "./index.css";
 
 const CVTamplates = ({onSelectTemplate}) => {
   const templateImages = [
+    "cv",
     "cv1",
     "cv2",
     "cv3",
@@ -15,7 +16,7 @@ const CVTamplates = ({onSelectTemplate}) => {
       <div className="cvb-templates-grid">
         {templateImages.map((image, index) => (
           <div key={index} className="cvb-template-card">
-            <img src={`/images/cvTamplates/${image}.png`} alt={`Template ${index + 1}`} className="cvb-template-image" />
+            <img src={`/images/cvTamplates/${image}.png`} alt={`Template ${index}`} className="cvb-template-image" />
             <button onClick={() => onSelectTemplate(image)} className="cvb-template-button">Use Template</button>
           </div>
         ))}

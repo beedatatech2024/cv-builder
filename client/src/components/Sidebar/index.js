@@ -21,7 +21,7 @@ const Sidebar = () => {
         <Link to="/dashboard" className="cvb-sidebar-nav-link">My CVs</Link>
         <Link to="/dashboard/templates" className="cvb-sidebar-nav-link">Templates</Link>
         <Link to="/dashboard/details" className="cvb-sidebar-nav-link">CV Details</Link>
-        <Link to="#4" className="cvb-sidebar-nav-link">Settings</Link>
+        <Link to="/dashboard/settings" className="cvb-sidebar-nav-link">Settings</Link>
       </nav>
       <ProgressBarChart data={progressData} />
         <button onClick={() => setOpenLogoutConfirm(true)} className="cvb-sidebar-nav-logout-button">Logout</button>

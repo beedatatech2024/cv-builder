@@ -9,6 +9,7 @@ import { jwtDecode } from "jwt-decode";
 import "./index.css";
 import { MdClose } from "react-icons/md";
 import { getCVProgress } from "../../api/cvDetailsApi";
+import CertificationForm from "../../forms/certificationForm";
 
 const CVModal = () => {
   const [isOpenPopup, setIsOpenPopup] = useState(null);
@@ -18,6 +19,11 @@ const CVModal = () => {
     skills: 0,
     experience: 0,
     projects: 0,
+    certifications: 0,
+    achievements: 0,
+    hobbies: 0,
+    extraCurricularActivities: 0,
+    refferencesInfo: 0,
   });
   const token = Cookies.get("jwtToken");
   const userId = token ? jwtDecode(token).id : null;
@@ -36,6 +42,9 @@ const CVModal = () => {
     fetchProgress();
 
     }, [userId]);
+
+    console.log("Progress:", progress);
+    
 
 
 
@@ -70,12 +79,16 @@ const CVModal = () => {
         return (
           <ProjectsForm userId={userId} onClose={() => setIsOpenPopup(false)} />
         );
+
+        case "certifications":
+        return (
+          <CertificationForm userId={userId} onClose={() => setIsOpenPopup(false)} />
+        )
       default:
         return null;
     }
   };
 
-  console.log("Progress:", progress);
   
 
   const updateProgress = (section, value) => {
@@ -92,6 +105,11 @@ const CVModal = () => {
             ["Skills", "skills"],
             ["Experience", "experience"],
             ["Projects", "projects"],    
+            ["Certifications", "certifications"],
+            ["Achievements", "achievements"],
+            ["Hobbies", "hobbies"],
+            ["Extra Curricular Activities", "extraCurricular"],
+            ["References", "references"],
           ].map(([label, key]) => (
             <div key={key} className="cvb-cv-section-card">
               <div className="cvb-cv-section-top">

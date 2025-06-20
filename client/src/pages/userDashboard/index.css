@@ -15,7 +15,7 @@
 /* Main Section */
 .cvb-dashboard-main {
   flex: 1;
-  padding: 2rem;
+  padding: 1rem;
   overflow-y: auto;
 }
 
@@ -125,9 +125,8 @@
 .cvb-templates-container{
   display: flex;
   flex-direction: column;
-  width: 90%;
-  padding: 2rem;
   background: #f7f8fc;
+  width: 100%;
 }
 
 .cvb-templates-container h1{
@@ -179,4 +178,117 @@
   width: 100%;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+
+
+
+.cvb-settings-container{
+  display: flex;
+  flex-direction: column;
+  background: #f7f8fc;
+  width: 100%;
+}
+
+.cvb-settings-title{
+  color: #4a00e0;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 0px;
+  margin: 0px;
+}
+
+.cvb-settings-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 10px;
+  overflow-y: auto;
+  height: 70vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cvb-settings-section{
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.cvb-settings-section-title{
+  color: #4a00e0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0px;
+  margin: 0px;
+}
+
+.cvb-settings-section-fields{
+  padding: 0.5rem;
+}
+
+.cvb-settings-section-field{
+  color: #636364;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0px;
+  margin: 0px
+}
+
+.cvb-settings-section-actions{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.cvb-settings-section-button{
+  background-color: #4a00e0;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cvb-settings-section-button.view{
+  background-color: #fdfcff;
+  border: 1px solid #4a00e0;
+  color: #4a00e0;
+}
+
+.cvb-settings-section-button.view:hover{
+  background-color: #4a00e0;
+  color: #fff;
+}
+
+.cvb-settings-section-button.edit{
+  background-color: #fdfcff;
+  border: 1px solid #f39020;
+  color: #f39020;
+}
+
+.cvb-settings-section-button.edit:hover{
+  background-color: #f39020;
+  color: #fff;
+}
+
+.cvb-settings-section-button.delete{
+  background-color: #fdfcff;
+  border: 1px solid #db1a1a;
+  color: #cc1c1c;
+}
+
+.cvb-settings-section-button.delete:hover{
+  background-color: #db1a1a;
+  color: #fff;
 }

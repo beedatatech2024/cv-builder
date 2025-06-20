@@ -1,110 +1,6 @@
 const cv = require("../models/cvModel");
 require("dotenv").config();
 
-const addPersonalDetails = async (req, res) => {
-  try {
-    const { fullName, phone, address, summary, linkedin, github } = req.body;
-    const userId = req.params.userId;
-
-    if (!fullName || !phone || !address || !summary || !linkedin || !github) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
-
-    const existingDetails = await cv.findPersonalDetailsByUserId(userId);
-    if (existingDetails) {
-      return res
-        .status(400)
-        .json({ message: "Personal details already exist for this user" });
-    }
-
-    await cv.addPersonalDetails(userId, {
-      fullName,
-      phone,
-      address,
-      summary,
-      linkedin,
-      github,
-      portfolio: "",
-      declaration: "",
-    });
-
-    res.status(200).json({ message: "Personal details updated successfully" });
-  } catch (error) {
-    console.error("Error updating personal details:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
-
-const addEducationDetails = async (req, res) => {
-  try {
-    const educations = req.body;
-    const userId = req.params.userId;
-
-    if (!educations || educations.length === 0) {
-      return res
-        .status(400)
-        .json({ message: "Education details are required" });
-    }
-    await cv.addEducation(userId, educations);
-    res.status(200).json({ message: "Education details updated successfully" });
-  } catch (error) {
-    console.error("Error updating education details:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
-
-const addExperienceDetails = async (req, res) => {
-  try {
-    const experiences = req.body;
-    console.log(experiences);
-
-    const userId = req.params.userId;
-    if (!experiences || experiences.length === 0) {
-      return res
-        .status(400)
-        .json({ message: "Experience details are required" });
-    }
-    await cv.addExperience(userId, experiences);
-    res
-      .status(200)
-      .json({ message: "Experience details updated successfully" });
-  } catch (error) {
-    console.error("Error updating experience details:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
-
-const addSkillsDetails = async (req, res) => {
-  try {
-    const skills = req.body;
-    const userId = req.params.userId;
-    if (!skills || skills.length === 0) {
-      return res.status(400).json({ message: "Skills details are required" });
-    }
-    await cv.addSkills(userId, skills);
-    res.status(200).json({ message: "Skills details updated successfully" });
-  } catch (error) {
-    console.error("Error updating skills details:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
-
-const addProjectsDetails = async (req, res) => {
-  try {
-    const projects = req.body;
-    console.log(projects);
-
-    const userId = req.params.userId;
-    if (!projects || projects.length === 0) {
-      return res.status(400).json({ message: "Projects details are required" });
-    }
-    await cv.addProjects(userId, projects);
-    res.status(200).json({ message: "Projects details updated successfully" });
-  } catch (error) {
-    console.error("Error updating projects details:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
-};
 
 const getCVDetails = async (req, res) => {
     
@@ -116,6 +12,11 @@ const getCVDetails = async (req, res) => {
     const skillsRaw = await cv.getSkills(userId);
     const experienceRaw = await cv.getExperience(userId);
     const projectsRaw = await cv.getProjects(userId);
+    const certificationsRaw = await cv.getCertifications(userId);
+    const achievementsRaw = await cv.getAchievements(userId);
+    const extracurricularRaw = await cv.getExtracurricularActivities(userId);
+    const hobbiesRaw = await cv.getHobbies(userId);
+    const referencesRaw = await cv.getRefferencesInfo(userId);
 
     const personal = {
       fullName: personalRaw?.full_name,
@@ -156,7 +57,35 @@ const getCVDetails = async (req, res) => {
       link: item.link,
     }));
 
-    const cvDetails = { personal, education, skills, experience, projects };
+    const certifications = certificationsRaw.map((item) => ({
+      course_name: item.course_name,
+      issuing_organization: item.issuing_organization,
+      date_of_completion: item.date_of_completion,
+      certificate_link: item.certificate_link,
+    }));
+
+    const achievements = achievementsRaw.map((item) => ({
+      title: item.title,
+      description: item.description,
+    }));
+
+    const extracurricular = extracurricularRaw.map((item) => ({
+      activity_name: item.activity_name,
+      description: item.description,
+    }));
+
+    const hobbies = hobbiesRaw.map((item) => ({
+      hobby_name: item.hobby_name,
+      description: item.description,
+    }));
+
+    const references = referencesRaw.map((item) => ({
+      name: item.name,
+      relationship: item.relationship,
+      contact_info: item.contact_info,
+    }));
+
+    const cvDetails = { personal, education, skills, experience, projects, certifications, achievements, extracurricular, hobbies, references };
 
     res.status(200).json(cvDetails);
   } catch (error) {
@@ -174,12 +103,23 @@ const getCVProgress = async (req, res) => {
     const skills = await cv.getSkills(userId);
     const experience = await cv.getExperience(userId);
     const education = await cv.getEducation(userId);
+    const certifications = await cv.getCertifications(userId);
+    const achievements = await cv.getAchievements(userId);
+    const hobbies = await cv.getHobbies(userId);
+    const extraCurricularActivities = await cv.getExtracurricularActivities(userId);
+    const getRefferencesInfo = await cv.getRefferencesInfo(userId);
+
 
     let personalDetailsProgress = 0;
     let educationDetailsProgress = 0;
     let experienceDetailsProgress = 0;
     let skillsDetailsProgress = 0;
     let projectsDetailsProgress = 0;
+    let certificationsDetailsProgress = 0;
+    let achievementsDetailsProgress = 0;
+    let hobbiesDetailsProgress = 0;
+    let extraCurricularActivitiesDetailsProgress = 0;
+    let refferencesInfoDetailsProgress = 0;
 
     // ✅ Personal Details (6 fields)
     if (personalDetails) {
@@ -238,7 +178,6 @@ const getCVProgress = async (req, res) => {
           return val !== null && val !== undefined;
         })
       );
-
       experienceDetailsProgress = isComplete ? 100 : 0;
     }
     // ✅ Skills (at least 5 valid entries)
@@ -263,12 +202,61 @@ const getCVProgress = async (req, res) => {
       projectsDetailsProgress = Math.round((validProjects.length / 2) * 100);
     }
 
+    // ✅ Certifications (up to 2 fully filled)
+    if (certifications?.length) {
+      const requiredFields = ["certification_name", "issuer", "issue_date"];
+      const validProjects = certifications
+        .slice(0, 2)
+        .filter((proj) =>
+          requiredFields.every((field) => proj[field]?.trim() !== "")
+        );
+      certificationsDetailsProgress = Math.round((validProjects.length / 2) * 100);
+    }
+
+
+
+    // ✅ Achievements (up to 2 fully filled)
+    if (achievements?.length) {
+      const requiredFields = ["achievement_name", "date"];
+      const validProjects = achievements
+        .slice(0, 2)
+        .filter((proj) =>
+          requiredFields.every((field) => proj[field]?.trim() !== "")
+        );
+      achievementsDetailsProgress = Math.round((validProjects.length / 2) * 100);
+    }
+
+    if (hobbies?.length) {
+        const requiredFields = ["hobby_name"];
+        const validProjects = hobbies
+          .slice(0, 2)
+          .filter((proj) =>
+            requiredFields.every((field) => proj[field]?.trim() !== "")
+          );
+        hobbiesDetailsProgress = Math.round((validProjects.length / 2) * 100);
+      }
+
+    if (extraCurricularActivities?.length) {
+        const requiredFields = ["activity_name", "year"];
+        const validProjects = extraCurricularActivities
+          .slice(0, 2)
+          .filter((proj) =>
+            requiredFields.every((field) => proj[field]?.trim() !== "")
+          );
+        extraCurricularActivitiesDetailsProgress = Math.round((validProjects.length / 2) * 100);
+      }
+
+
     const progress = {
       personalDetails: personalDetailsProgress,
       education: educationDetailsProgress,
       experience: experienceDetailsProgress,
       skills: skillsDetailsProgress,
       projects: projectsDetailsProgress,
+      certifications: certificationsDetailsProgress,
+      achievements: achievementsDetailsProgress,
+      hobbies: hobbiesDetailsProgress,
+      extraCurricularActivities: extraCurricularActivitiesDetailsProgress,
     };
 
     res.status(200).json({ progress });
@@ -278,12 +266,8 @@ const getCVProgress = async (req, res) => {
   }
 };
 
+
 module.exports = {
-  addPersonalDetails,
-  addEducationDetails,
-  addExperienceDetails,
-  addSkillsDetails,
-  addProjectsDetails,
-  getCVDetails,
   getCVProgress,
+  getCVDetails
 };
