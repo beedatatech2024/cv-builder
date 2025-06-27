@@ -187,7 +187,7 @@ You can find the database SQL file here:
 ## 📬 Contact
 
 If you have any questions or issues, feel free to contact:  
-**BeeData Technologies** – [support@beedata.in](mailto:support@beedata.in)
+**BeeData Technologies** – [support@beedata.in](mailto:ramarao.teamweb@bedatatech.com)
 
 ---
 
