@@ -322,7 +322,6 @@
   gap: 2rem;
 }
 
-
 .cvb-dh-card {
   background: white;
   border-radius: 12px;
@@ -346,9 +345,20 @@
 }
 
 .cvb-dh-progress-fill {
-  background: #28a745;
   height: 100%;
   transition: width 0.4s ease;
+}
+
+.progress-red {
+  background-color: #dc3545;
+}
+
+.progress-orange {
+  background-color: #fd7e14;
+}
+
+.progress-green {
+  background-color: #28a745;
 }
 
 .cvb-dh-section-status {
@@ -416,3 +426,19 @@
 .cvb-dh-btn:hover {
   opacity: 0.9;
 }
+
+/* Existing bar container */
+.cvb-dh-progress-bar {
+  background: #e0e0e0;
+  height: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  transition: border 0.3s ease;
+}
+
+/* Add red border if progress is low */
+.progress-red-border {
+  border: 2px solid #dc3545;
+}
+

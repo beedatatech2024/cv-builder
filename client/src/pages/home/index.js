@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import Navbar from '../../components/navbar';
+import InstallButton from '../../components/InstallButton';
 
 const HomePage = () => {
   return (
@@ -9,7 +10,10 @@ const HomePage = () => {
       <header className="cvb-hero-section">
         <h1>Create Your Professional Resume in Minutes</h1>
         <p>Craft a standout CV with ease using modern, customizable templates.</p>
+        <div>
         <button className="cvb-cta-btn">Start Building</button>
+        <InstallButton />
+        </div>
       </header>
 
       <section id="features" className="cvb-features-section">

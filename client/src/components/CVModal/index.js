@@ -15,7 +15,7 @@ import HobbiesForm from "../../forms/hobbiesForm";
 import ExtraCulturalForm from "../../forms/culturalactivitesForm";
 import ReferenceForm from "../../forms/referenceForm";
 
-const CVModal = ({}) => {
+const CVModal = () => {
   const [isOpenPopup, setIsOpenPopup] = useState(null);
   const [progress, setProgress] = useState({
     personalDetails: 0,

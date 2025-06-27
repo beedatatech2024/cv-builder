@@ -5,7 +5,7 @@ import { getCVDetails } from "../../api/cvDetailsApi";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
-const CVDetails = ({ cvData: propData }) => {
+const CVDetails = ({ cvData: propData, progress }) => {
   const [cvData, setCvData] = useState(propData || null);
   const [loading, setLoading] = useState(!propData);
 
@@ -32,7 +32,7 @@ const CVDetails = ({ cvData: propData }) => {
 
   return (
     <div className="cvb-cv-details">
-      <CVModal userId={userId} />
+      <CVModal progress={progress} userId={userId} />
       {cvData ? (
         <CVPreview cvData={cvData} selectedTemplate={"cv"} />
       ) : (

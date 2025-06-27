@@ -4,24 +4,28 @@ import './index.css';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
 import CVDetails from './cvDetails';
-import { getCVDetails } from '../../api/cvDetailsApi';
+import { getCVDetails, getCVProgress } from '../../api/cvDetailsApi';
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import CVBuilderPage from '../../components/CVBuilderPage';
 import Settings from './cvSettings';
 import DashboardContent from './homePage';
+import CVLoader from '../../components/Loader';
 
 const UserDashboard = () => {
   const [cvData, setCvData] = useState(null);
+   const [progress, setProgress] = useState(null);
     const token = Cookies.get("jwtToken");
     const userId = token ? jwtDecode(token).id : null;
   
+  
     useEffect(() => {
       const fetchCVDetails = async () => {
-        
         try {
-          const response = await getCVDetails(userId);
-          setCvData(response);
+          const detailsResponse = await getCVDetails(userId);
+          const response = await getCVProgress(userId);
+          setProgress(response.progress);
+          setCvData(detailsResponse);
         } catch (error) {
           console.error("Error fetching CV details:", error);
         }
@@ -35,22 +39,27 @@ const UserDashboard = () => {
   
     };
   return (
-    <div className="cvb-dashboard-container">
-      <Sidebar />
-      <main className="cvb-dashboard-main">
-        <Header userName={cvData?.personal?.fullName} />
-        <Routes>
-          
-          <Route path="/" element={<DashboardContent />} />
-          <Route path="/my-cvs" element={<CVDetails />} />
-          {cvData && <Route path="/templates" element={<CVBuilderPage cvData={cvData} onSelectionComplete={handleSelectionComplete} />} />}
-          <Route path="/create-cv" element={<h2>Create CV</h2>} />
-          {cvData && <Route path="/details" element={<CVDetails cvData={cvData} />} />}
-          {cvData && <Route path="/cv-builder" element={<CVBuilderPage cvData={cvData} />} />}
-          {cvData && <Route path="/settings" element={<Settings cvData={cvData}/>} />}
-        </Routes>
-      </main>
-    </div>
+     <div className="cvb-dashboard-container">
+    <Sidebar />
+    <main className="cvb-dashboard-main">
+      {!cvData ? (
+        <CVLoader />
+      ) : (
+        <>
+          <Header userName={cvData?.personal?.fullName} />
+          <Routes>
+            {!progress ? <CVLoader /> : <Route path="/" element={<DashboardContent progress={progress}/>} />}
+            <Route path="/my-cvs" element={<CVDetails />} />
+            <Route path="/templates" element={<CVBuilderPage cvData={cvData} onSelectionComplete={handleSelectionComplete} />} />
+            <Route path="/create-cv" element={<h2>Create CV</h2>} />
+            <Route path="/details" element={<CVDetails cvData={cvData} />} />
+            {!progress ? <CVLoader /> : <Route path="/cv-builder" element={<CVBuilderPage progress={progress} cvData={cvData} />} />}
+            <Route path="/settings" element={<Settings cvData={cvData}/>} />
+          </Routes>
+        </>
+      )}
+    </main>
+  </div>
   );
 };
 

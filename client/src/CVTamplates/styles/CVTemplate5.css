@@ -1,0 +1,88 @@
+.more-resume-container {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.more-resume-header {
+  background-color: #d1b2e0;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.more-header-top {
+  text-align: center;
+}
+
+.more-header-name {
+  margin: 0;
+  font-size: 32px;
+  color: #5c2c91;
+}
+
+.more-header-line {
+  margin: 10px auto;
+  width: 90%;
+  border: 2px solid #5c2c91;
+  border-radius: 5px;
+}
+
+.more-header-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.more-header-left, .more-header-right {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.more-header-left {
+  text-align: left;
+}
+
+.more-header-right {
+  text-align: right;
+}
+
+.more-header-left h3,
+.more-header-left p,
+.more-header-right p {
+  margin: 5px 0;
+}
+
+.more-section {
+  margin-bottom: 30px;
+}
+
+.more-section-title {
+  background-color: #8654b3;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.more-section-paragraph {
+  font-size: 1rem;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.more-section-list {
+  margin: 10px 0 0 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.more-section-list-item {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}

@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 210mm;
-  height: 297mm;
+  height: 330mm;
   box-sizing: border-box;
   background-color: #fff;
   font-family: 'Arial', sans-serif;
@@ -111,4 +111,14 @@
 
 .cvb-template1-section ul {
   padding-left: 20px;
+}
+
+.cvb-template1-heading red{
+  list-style-type: none;
+}
+.cvb-template1-heading white{
+  list-style-type: none;
+}
+.cvb-template1-heading sub{
+  list-style-type: none;
 }

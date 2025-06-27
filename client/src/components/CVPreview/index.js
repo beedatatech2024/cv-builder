@@ -10,6 +10,7 @@ import CVTemplate3 from "../../CVTamplates/CVTemplate3";
 import CVTemplate4 from "../../CVTamplates/CVTemplate4";
 import CVTemplate from "../../CVTamplates/CVTemplate";
 import { useLocation } from "react-router-dom";
+import CVTemplate5 from "../../CVTamplates/CVTemplate5";
 
 const CVPreview = ({ cvData, selectedTemplate, onSelectTemplate }) => {
   const [selectData, setSelectData] = useState(null);
@@ -55,6 +56,7 @@ const CVPreview = ({ cvData, selectedTemplate, onSelectTemplate }) => {
       case "cv2": return <CVTemplate2 cvData={selectData} />;
       case "cv3": return <CVTemplate3 cvData={selectData} />;
       case "cv4": return <CVTemplate4 cvData={selectData} />;
+      case "cv5": return <CVTemplate5 cvData={selectData} />;
       default: return <div>No template selected.</div>;
     }
   };
