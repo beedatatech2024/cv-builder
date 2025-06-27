@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addCertificationDetails } from '../../api/cvDetailsApi';
 import './index.css';
 
-const CertificationForm = ({ userId }) => {
+const CertificationForm = ({ userId, onClose }) => {
     const [certificates, setCertificates
 
         
@@ -38,6 +38,7 @@ const CertificationForm = ({ userId }) => {
             const response = await addCertificationDetails(userId, certificates);
             if (response.ok) {
                 alert("Projects added successfully!");
+                onClose()
             } else {
                 alert(response.message || "Failed to add projects");
             }

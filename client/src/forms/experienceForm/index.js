@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import { addExperienceDetails } from '../../api/cvDetailsApi';
 
-const ExperienceForm = ({userId}) => {
+const ExperienceForm = ({userId, onClose}) => {
   const [experiences, setExperiences] = useState([
     {
       companyName: '',
@@ -36,6 +36,7 @@ const ExperienceForm = ({userId}) => {
       const response = await addExperienceDetails(userId, experiences);
       if (response.ok) {
         alert("Experience details added successfully!");
+        onClose();
       } else {
         alert(response.message || "Failed to add experience details");
       }

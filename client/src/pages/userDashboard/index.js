@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import CVBuilderPage from '../../components/CVBuilderPage';
 import Settings from './cvSettings';
+import DashboardContent from './homePage';
 
 const UserDashboard = () => {
   const [cvData, setCvData] = useState(null);
@@ -40,7 +41,7 @@ const UserDashboard = () => {
         <Header userName={cvData?.personal?.fullName} />
         <Routes>
           
-          <Route path="/" element={<h2>Welcome to your dashboard!</h2>} />
+          <Route path="/" element={<DashboardContent />} />
           <Route path="/my-cvs" element={<CVDetails />} />
           {cvData && <Route path="/templates" element={<CVBuilderPage cvData={cvData} onSelectionComplete={handleSelectionComplete} />} />}
           <Route path="/create-cv" element={<h2>Create CV</h2>} />

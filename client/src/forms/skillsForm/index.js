@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addSkillsDetails } from '../../api/cvDetailsApi';
 import './index.css';
 
-const SkillsForm = ({userId}) => {
+const SkillsForm = ({userId, onClose}) => {
   const [skills, setSkills] = useState([{ skill_name: '', level: '' }]);
 
   const handleChange = (index, e) => {
@@ -25,6 +25,7 @@ const SkillsForm = ({userId}) => {
       const response = await addSkillsDetails(userId, skills);
       if (response.ok) {
         alert("Skills added successfully!");
+        onClose();
       } else {
         alert(response.message || "Failed to add skills");
       }

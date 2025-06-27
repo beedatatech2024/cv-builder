@@ -9,12 +9,14 @@ import CVTemplate2 from "../../CVTamplates/CVTemplate2";
 import CVTemplate3 from "../../CVTamplates/CVTemplate3";
 import CVTemplate4 from "../../CVTamplates/CVTemplate4";
 import CVTemplate from "../../CVTamplates/CVTemplate";
+import { useLocation } from "react-router-dom";
 
 const CVPreview = ({ cvData, selectedTemplate, onSelectTemplate }) => {
   const [selectData, setSelectData] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const cvRef = useRef();
   const formRef = useRef();
+  const location = useLocation()
 
   useEffect(() => {
     if (cvData) setSelectData(cvData);
@@ -42,7 +44,6 @@ const CVPreview = ({ cvData, selectedTemplate, onSelectTemplate }) => {
   };
 
   const handleSelectionComplete = (filteredCVData) => {
-    
     setShowForm(!showForm);
     setSelectData(filteredCVData);
   };
@@ -62,7 +63,7 @@ const CVPreview = ({ cvData, selectedTemplate, onSelectTemplate }) => {
     <div className="cvb-preview-main-container">
       {selectData && (
         <>
-        <div className="cvb-preview-header">
+       {location.pathname !== "/dashboard/details" && <div className="cvb-preview-header">
           <button onClick={() => onSelectTemplate()} className="cvb-template-back-button">Back</button>
           <button
             className="cvb-toggle-button"
@@ -71,7 +72,7 @@ const CVPreview = ({ cvData, selectedTemplate, onSelectTemplate }) => {
             {showForm ? "Hide" : "Show"} Section Form
           </button>
 
-          </div>
+          </div>}
 
           <div className="cvb-preview-container1">
             {(

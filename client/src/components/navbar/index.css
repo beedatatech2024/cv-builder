@@ -10,10 +10,22 @@
   z-index: 100;
 }
 
-.cvb-logo {
-  font-size: 1.6rem;
+.cvb-navbar-logo{
+  font-size: 2rem;
   font-weight: 700;
   color: #4a00e0;
+  display: flex;
+  align-items: center
+}
+
+.cvb-navbar-logo-img{
+  width: 50px;
+  margin-right: 10px;
+}
+
+.cvb-navbar-logo-text{
+  font-size: 2rem;
+
 }
 
 .cvb-nav-links a {
@@ -114,6 +126,11 @@
 
   @media (max-width: 768px) {
 
+  .cvb-login-popup {
+    padding: 1rem;
+  }
+  
+
   .app-button,
   .cvb-sign-in-button {
     width: 100%;
@@ -159,9 +176,45 @@
   }
   .header-nav-link{
     align-self: flex-end;
-    position: fixed;
+    position: fixed;  
     top: 2px;
     text-decoration: none;
     color: white;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .cvb-navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  /* Hide logo text and nav links */
+  .cvb-navbar-logo-text,
+  .cvb-nav-links a {
+    display: none;
+  }
+
+  .cvb-nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .cvb-start-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 14px;
+    border-radius: 50px;
+  }
+
+  .cvb-navbar-logo-img {
+    width: 50px;
+    margin-right: 0;
+  }
+
+  .cvb-navbar-logo {
+    font-size: 1.4rem;
+    font-weight: 600;
   }
 }

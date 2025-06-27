@@ -11,7 +11,6 @@ const registerUser = async (req, res) => {
     const existingUser = await User.findByEmail(email);
     if (existingUser)
       return res.status(400).json({ message: "Email already exists" });
-
     await User.createUser(name, email, password);
     res
       .status(201)
@@ -139,7 +138,7 @@ const verifyResetOtp = async (req, res) => {
       expiresIn: "10m",
     });
 
-    res.json({ message: "OTP verified", resetToken });
+    res.json({message: "OTP verified", resetToken});
   } catch (error) {
     res.status(400).json({ message: "Invalid or expired OTP" });
   }

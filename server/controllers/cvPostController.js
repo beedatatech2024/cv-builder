@@ -24,7 +24,7 @@ const addPersonalDetails = async (req, res) => {
       summary,
       linkedin,
       github,
-      portfolio: "",
+      email: "",
       declaration: "",
     });
 
@@ -56,8 +56,6 @@ const addEducationDetails = async (req, res) => {
 const addExperienceDetails = async (req, res) => {
   try {
     const experiences = req.body;
-    console.log(experiences);
-
     const userId = req.params.userId;
     if (!experiences || experiences.length === 0) {
       return res
@@ -92,8 +90,6 @@ const addSkillsDetails = async (req, res) => {
 const addProjectsDetails = async (req, res) => {
   try {
     const projects = req.body;
-    console.log(projects);
-
     const userId = req.params.userId;
     if (!projects || projects.length === 0) {
       return res.status(400).json({ message: "Projects details are required" });

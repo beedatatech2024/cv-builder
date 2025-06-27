@@ -78,6 +78,9 @@
 
 
 @media (max-width: 768px) {
+  .cvb-edu-form-container {
+    width: 100%;
+  }
   .cvb-edu-form-row {
     flex-wrap: wrap;
   }
@@ -155,3 +158,5 @@
 .cvb-edu-remove-btn:hover {
   background-color: #ffe6e6;
 }
+
+

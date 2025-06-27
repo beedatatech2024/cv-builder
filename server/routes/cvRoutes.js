@@ -13,7 +13,7 @@ router.post('/cv/skills/:userId', addSkillsDetails);
 router.post('/cv/projects/:userId', addProjectsDetails);
 router.post('/cv/certifications/:userId', addCertificationDetails);
 router.post('/cv/achievements/:userId', addAchievementDetails);
-router.post('/cv/extracurricular/:userId', addExtracurricularActivitiesDetails);
+router.post('/cv/activities/:userId', addExtracurricularActivitiesDetails);
 router.post('/cv/references/:userId', addRefferencesInfoDetails);
 router.post('/cv/hobbies/:userId', addHobbiesDetails);
 

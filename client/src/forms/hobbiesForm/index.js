@@ -1,58 +1,56 @@
 import React, { useState } from 'react';
-import { addProjectsDetails } from '../../api/cvDetailsApi';
+import { addHobbies } from '../../api/cvDetailsApi';
 import './index.css';
 
-const ProjectsForm = ({userId, onClose}) => {
-  const [projects, setProjects] = useState([
+const HobbiesForm = ({userId}) => {
+  const [hobbies, setHobbies] = useState([
     {
-      projectTitle: '',
+      hobbyName: '',
       description: '',
-      link: '',
     },
   ]);
 
   const handleChange = (index, e) => {
-    const updatedProjects = [...projects];
-    updatedProjects[index][e.target.name] = e.target.value;
-    setProjects(updatedProjects);
+    const updatedHobbies = [...hobbies];
+    updatedHobbies[index][e.target.name] = e.target.value;
+    setHobbies(updatedHobbies);
   };
 
   const handleAddProject = () => {
-    setProjects([
-      ...projects,
-      { projectTitle: '', description: '', link: '' },
+    setHobbies([
+      ...hobbies,
+      { hobbyName: '', description: ''},
     ]);
   };
 
   const handleRemoveProject = (index) => {
-    const updatedProjects = projects.filter((_, i) => i !== index);
-    setProjects(updatedProjects);
+    const updatedhobbies = hobbies.filter((_, i) => i !== index);
+    setHobbies(updatedhobbies);
   };
 
   const handleSubmit = async () => {
     try {
-      const response = await addProjectsDetails(userId, projects);
+      const response = await addHobbies(userId, hobbies);
       if (response.ok) {
         alert("Projects added successfully!");
-        onClose();
       } else {
         alert(response.message || "Failed to add projects");
       }
     } catch (error) {
       console.error('Error saving projects:', error);
     }
-    console.log('Submitted projects:', projects);    
+    console.log('Submitted projects:', hobbies);    
   };
 
   return (
     <div className="cvb-edu-form-container">
-      <h2 className="cvb-edu-form-title">Projects</h2>
+      <h2 className="cvb-edu-form-title">Hobbies</h2>
       <form className="cvb-edu-form">
-        {projects.map((project, index) => (
+        {hobbies.map((project, index) => (
           <div key={index} className="cvb-edu-form-block">
             <div className="cvb-edu-form-block-header">
-              <h4 className="cvb-edu-form-block-title">Project {index + 1}</h4>
-              {projects.length > 1 && (
+              <h4 className="cvb-edu-form-block-title">Hobbie {index +1}</h4>
+              {hobbies.length > 1 && (
                 <button
                   type="button"
                   className="cvb-edu-remove-btn"
@@ -64,53 +62,40 @@ const ProjectsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Project Title</label>
+              <label>Hobbie Name</label>
               <input
                 type="text"
-                name="projectTitle"
-                placeholder="Enter project title"
-                value={project.projectTitle}
+                name="hobbyName"
+                placeholder="Enter hobbie name"
+                value={hobbies.hobbyName}
                 onChange={(e) => handleChange(index, e)}
                 required
               />
             </div>
-
             <div className="cvb-edu-form-group">
               <label>Description</label>
               <textarea
                 name="description"
                 placeholder="Enter project description"
-                value={project.description}
+                value={hobbies.description}
                 onChange={(e) => handleChange(index, e)}
                 rows="4"
                 required
               />
             </div>
-
-            <div className="cvb-edu-form-group">
-              <label>Project Link</label>
-              <input
-                type="url"
-                name="link"
-                placeholder="https://your-project-link.com"
-                value={project.link}
-                onChange={(e) => handleChange(index, e)}
-              />
-            </div>
-
             <hr className="cvb-edu-divider" />
           </div>
         ))}
 
         <button type="button" className="cvb-edu-add-btn" onClick={handleAddProject}>
-          ➕ Add New Project
+          ➕ Add New Hobbies
         </button>
       </form>
       <button type="button" onClick={handleSubmit} className="cvb-edu-submit-btn">
-          Save Projects
+          Save Hobbies
         </button>
     </div>
   );
 };
 
-export default ProjectsForm;
+export default HobbiesForm;

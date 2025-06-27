@@ -10,7 +10,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
     summary: '',
     linkedin: '',
     github: '',
-    portfolio: '',
+    email: '',
     declaration: '',
   });
 
@@ -29,7 +29,9 @@ const PersonalInfoForm = ({userId, onClose}) => {
       }
     }
     catch (error) {
-      console.error('Error saving personal information:', error);
+      alert('Error saving personal information:', error);
+
+
     }
       
     
@@ -64,6 +66,17 @@ const PersonalInfoForm = ({userId, onClose}) => {
         </div>
 
         <div className="cvb-edu-form-group">
+          <label>Email</label>
+          <input
+            type="url"
+            name="email"
+            placeholder="Enter email address"
+            value={personalInfo.email}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="cvb-edu-form-group">
           <label>Address</label>
           <input
             type="text"
@@ -74,6 +87,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
             required
           />
         </div>
+        
 
         <div className="cvb-edu-form-group">
           <label>Summary</label>
@@ -108,16 +122,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
             onChange={handleChange}
           />
         </div>
-        <div className="cvb-edu-form-group">
-          <label>Portfolio</label>
-          <input
-            type="url"
-            name="portfolio"
-            placeholder="https://www.yourdomain.com/"
-            value={personalInfo.portfolio}
-            onChange={handleChange}
-          />
-        </div>
+        
          <div className="cvb-edu-form-group">
           <label>Declaration</label>
           <textarea

@@ -3,6 +3,8 @@
     flex-direction: column;
     width: 50vw;
     gap: 0.5rem;
+    height: 100px;
+    overflow-y: auto;
     margin-bottom: 1rem
 }
 
@@ -24,4 +26,53 @@
 .cvb-render-popup-content{
     display: flex;
     flex-direction: column;
+}
+
+
+/* Responsive Styles for Personal Info */
+@media (max-width: 1024px) {
+  .cvb-personal-info {
+    width: 80vw;
+    font-size: 14px;
+    padding: 0.5rem;
+  }
+
+  .cvb-personal-info p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cvb-personal-info {
+    width: 95vw;
+    gap: 0.6rem;
+    height: auto;
+  }
+
+  .cvb-personal-info p {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+
+  .cvb-personal-info strong {
+    display: inline-block;
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cvb-personal-info {
+    padding: 0.5rem;
+    width: 100%;   
+  }
+
+  .cvb-personal-info p {
+    font-size: 12px;
+    word-break: break-word;
+  }
+
+  .cvb-personal-info strong {
+    font-weight: bold;
+    min-width: 80px;
+  }
 }

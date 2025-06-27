@@ -10,8 +10,12 @@ import "./index.css";
 import { MdClose } from "react-icons/md";
 import { getCVProgress } from "../../api/cvDetailsApi";
 import CertificationForm from "../../forms/certificationForm";
+import AchievementsForm from "../../forms/achievementForm";
+import HobbiesForm from "../../forms/hobbiesForm";
+import ExtraCulturalForm from "../../forms/culturalactivitesForm";
+import ReferenceForm from "../../forms/referenceForm";
 
-const CVModal = () => {
+const CVModal = ({}) => {
   const [isOpenPopup, setIsOpenPopup] = useState(null);
   const [progress, setProgress] = useState({
     personalDetails: 0,
@@ -28,25 +32,20 @@ const CVModal = () => {
   const token = Cookies.get("jwtToken");
   const userId = token ? jwtDecode(token).id : null;
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchProgress = async () => {
       try {
         const response = await getCVProgress(userId);
         setProgress(response.progress);
-        
       } catch (error) {
         console.error("Error fetching progress:", error);
       }
     };
 
     fetchProgress();
+  }, [userId]);
 
-    }, [userId]);
-
-    console.log("Progress:", progress);
-    
-
-
+  console.log("Progress:", progress);
 
   const renderForms = () => {
     switch (isOpenPopup) {
@@ -80,16 +79,34 @@ const CVModal = () => {
           <ProjectsForm userId={userId} onClose={() => setIsOpenPopup(false)} />
         );
 
-        case "certifications":
+      case "certifications":
         return (
-          <CertificationForm userId={userId} onClose={() => setIsOpenPopup(false)} />
+          <CertificationForm
+            userId={userId}
+            onClose={() => setIsOpenPopup(false)}
+          />
+        );
+      case "achievements":
+        return (
+          <AchievementsForm userId={userId} onClose={() => setIsOpenPopup(false)} />
+        );
+      case "hobbies":
+        return (
+          <HobbiesForm userId={userId} onClose={() => setIsOpenPopup(false)} />
+          );
+      case "extraCurricular":
+        return (
+         <ExtraCulturalForm userId={userId} onClose={() => setIsOpenPopup(false)} />
+      )
+
+      case "references":
+        return (
+          <ReferenceForm userId={userId} onClose={() => setIsOpenPopup(false)} />
         )
       default:
         return null;
     }
   };
-
-  
 
   const updateProgress = (section, value) => {
     setProgress((prev) => ({ ...prev, [section]: value }));
@@ -104,7 +121,7 @@ const CVModal = () => {
             ["Education Details", "education"],
             ["Skills", "skills"],
             ["Experience", "experience"],
-            ["Projects", "projects"],    
+            ["Projects", "projects"],
             ["Certifications", "certifications"],
             ["Achievements", "achievements"],
             ["Hobbies", "hobbies"],

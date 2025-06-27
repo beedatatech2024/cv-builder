@@ -11,7 +11,7 @@ const Settings = ({ cvData }) => {
     <div className="cvb-settings-container">
       <h1 className="cvb-settings-title">Sections</h1>
       <div className="cvb-settings-grid">
-        <div className="cvb-settings-section">
+        <div className="cvb-settings-section" onClick={() => setIsOpenPopup("personal")}>
           <h2 className="cvb-settings-section-title">Personal Details</h2>
           <div>
             <p className="cvb-settings-section-field">
@@ -30,21 +30,9 @@ const Settings = ({ cvData }) => {
               Address: {personal.address}
             </p>
           </div>
-          <div className="cvb-settings-section-actions">
-            <button
-              onClick={() => setIsOpenPopup("personal")}
-              className="cvb-settings-section-button view"
-            >
-              View
-            </button>
-            <button className="cvb-settings-section-button edit">Edit</button>
-            <button className="cvb-settings-section-button delete">
-              Delete
-            </button>
-          </div>
         </div>
 
-        <div className="cvb-settings-section">
+        <div onClick={() => setIsOpenPopup("experience")} className="cvb-settings-section">
           <h2 className="cvb-settings-section-title">Work Experience</h2>
           <div className="cvb-settings-section-fields">
             {experience.map((experience, index) => (
@@ -56,21 +44,9 @@ const Settings = ({ cvData }) => {
               </div>
             ))}
           </div>
-          <div className="cvb-settings-section-actions">
-            <button
-              onClick={() => setIsOpenPopup("experience")}
-              className="cvb-settings-section-button view"
-            >
-              View
-            </button>
-            <button className="cvb-settings-section-button edit">Edit</button>
-            <button className="cvb-settings-section-button delete">
-              Delete
-            </button>
-          </div>
         </div>
 
-        <div className="cvb-settings-section">
+        <div  onClick={() => setIsOpenPopup("education")} className="cvb-settings-section">
           <h2 className="cvb-settings-section-title">Education</h2>
           <div>
             {education.map((education, index) => (
@@ -81,21 +57,9 @@ const Settings = ({ cvData }) => {
               </div>
             ))}
           </div>
-          <div className="cvb-settings-section-actions">
-            <button
-              onClick={() => setIsOpenPopup("education")}
-              className="cvb-settings-section-button view"
-            >
-              View
-            </button>
-            <button className="cvb-settings-section-button edit">Edit</button>
-            <button className="cvb-settings-section-button delete">
-              Delete
-            </button>
-          </div>
         </div>
 
-        <div className="cvb-settings-section">
+        <div onClick={() => setIsOpenPopup("skills")} className="cvb-settings-section">
           <h2 className="cvb-settings-section-title">Skills</h2>
           <div>
             {skills.map((skill, index) => (
@@ -104,21 +68,9 @@ const Settings = ({ cvData }) => {
               </div>
             ))}
           </div>
-          <div className="cvb-settings-section-actions">
-            <button
-              onClick={() => setIsOpenPopup("skills")}
-              className="cvb-settings-section-button view"
-            >
-              View
-            </button>
-            <button className="cvb-settings-section-button edit">Edit</button>
-            <button className="cvb-settings-section-button delete">
-              Delete
-            </button>
-          </div>
         </div>
 
-        <div className="cvb-settings-section">
+        <div onClick={() => setIsOpenPopup("projects")} className="cvb-settings-section">
           <h2 className="cvb-settings-section-title">Projects</h2>
           <div>
             {projects.map((project, index) => (
@@ -129,21 +81,9 @@ const Settings = ({ cvData }) => {
               </div>
             ))}
           </div>
-          <div className="cvb-settings-section-actions">
-            <button
-              onClick={() => setIsOpenPopup("projects")}
-              className="cvb-settings-section-button view"
-            >
-              View
-            </button>
-            <button className="cvb-settings-section-button edit">Edit</button>
-            <button className="cvb-settings-section-button delete">
-              Delete
-            </button>
-          </div>
         </div>
 
-        <div className="cvb-settings-section">
+        <div onClick={() => setIsOpenPopup("certifications")} className="cvb-settings-section">
           <h2 className="cvb-settings-section-title">Certifications</h2>
           <div>
             {certifications.map((certification, index) => (
@@ -153,18 +93,6 @@ const Settings = ({ cvData }) => {
                 </p>
               </div>
             ))}
-          </div>
-          <div className="cvb-settings-section-actions">
-            <button
-              onClick={() => setIsOpenPopup("certifications")}
-              className="cvb-settings-section-button view"
-            >
-              View
-            </button>
-            <button className="cvb-settings-section-button edit">Edit</button>
-            <button className="cvb-settings-section-button delete">
-              Delete
-            </button>
           </div>
         </div>
       </div>

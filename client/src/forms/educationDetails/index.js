@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addEducationDetails } from '../../api/cvDetailsApi';
 import './index.css';
 
-const EducationDetailsForm = ({userId}) => {
+const EducationDetailsForm = ({userId, onClose}) => {
   const [educations, setEducations] = useState([
     { institution: '', degree: '', field: '', percentage: '', startDate: '', endDate: '' },
   ]);
@@ -26,11 +26,10 @@ const EducationDetailsForm = ({userId}) => {
   };
 
   const handleSubmit = async() => {
-    console.log('Submitting education details:', educations);
-    
    const response = await addEducationDetails(userId, educations);
     if (response.ok) {
       alert("Education details added successfully!");
+      onClose();
     } else {
       alert(response.message || "Failed to add education details");
     }

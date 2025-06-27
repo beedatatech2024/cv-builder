@@ -8,7 +8,15 @@ const CVSectionSelector = ({ cvData, onSelectionComplete }) => {
     skills: [],
     experience: [],
     projects: [],
+    achievements: [], 
+    references: [], 
+    certifications: [], 
+    extracurricular: [], 
+    hobbies: [],
   });
+
+  console.log(cvData.achievements);
+  
 
   useEffect(() => {
     if (cvData) {
@@ -18,6 +26,11 @@ const CVSectionSelector = ({ cvData, onSelectionComplete }) => {
         skills: cvData.skills.map(() => true),
         experience: cvData.experience.map(() => true),
         projects: cvData.projects.map(() => true),
+        achievements: cvData.achievements.map(() => true),
+        references: cvData.references.map(() => true),
+        certifications: cvData.certifications.map(() => true),
+        extracurricular: cvData.extracurricular.map(() => true),
+        hobbies: cvData.hobbies.map(() => true),
       });
     }
   }, [cvData]);
@@ -42,6 +55,11 @@ const CVSectionSelector = ({ cvData, onSelectionComplete }) => {
       skills: cvData.skills.filter((_, i) => selection.skills[i]),
       experience: cvData.experience.filter((_, i) => selection.experience[i]),
       projects: cvData.projects.filter((_, i) => selection.projects[i]),
+      achievements: cvData.achievements.filter((_, i) => selection.achievements[i]),
+      references: cvData.references.filter((_, i) => selection.references[i]),
+      certifications: cvData.certifications.filter((_, i) => selection.certifications[i]),
+      extracurricular: cvData.extracurricular.filter((_, i) => selection.extracurricular[i]),
+      hobbies: cvData.hobbies.filter((_, i) => selection.hobbies[i]),
     };
     onSelectionComplete(filteredData);
   };
@@ -138,6 +156,102 @@ const CVSectionSelector = ({ cvData, onSelectionComplete }) => {
               onChange={() => handleItemToggle("projects", index)}
             />
             {project.project_title}
+          </label>
+        ))}
+      </div>
+
+      {/* Achievements */}
+      <div className="cvb-section-block">
+        <div className="cvb-section-header">
+          <label>Achievements</label>
+          <button onClick={() => handleAllToggle("achievements", true)}>Select All</button>
+          <button onClick={() => handleAllToggle("achievements", false)}>Unselect All</button>
+        </div>
+        {cvData.achievements.map((achievement, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={selection.achievements[index]}
+              onChange={() => handleItemToggle("achievements", index)}
+            />
+            {achievement.title}
+          </label>
+        ))}
+      </div>
+
+
+      {/* Certifications */}
+      <div className="cvb-section-block">
+        <div className="cvb-section-header">
+          <label>Certifications</label>
+          <button onClick={() => handleAllToggle("certifications", true)}>Select All</button>
+          <button onClick={() => handleAllToggle("certifications", false)}>Unselect All</button>
+        </div>
+        {cvData.certifications.map((certification, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={selection.certifications[index]}
+              onChange={() => handleItemToggle("certifications", index)}
+            />
+            {certification.course_name} - {certification.issuing_organization}
+          </label>
+        ))}
+      </div>
+
+      {/* Extracurricular */}
+      <div className="cvb-section-block">
+        <div className="cvb-section-header">
+          <label>Extracurricular Activities</label>
+          <button onClick={() => handleAllToggle("extracurricular", true)}>Select All</button>
+          <button onClick={() => handleAllToggle("extracurricular", false)}>Unselect All</button>
+        </div>
+        {cvData.extracurricular.map((activity, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={selection.extracurricular[index]}
+              onChange={() => handleItemToggle("extracurricular", index)}
+            />
+            {activity.activities_performed}
+          </label>
+        ))}
+      </div>
+
+      {/* References */}
+      <div className="cvb-section-block">
+        <div className="cvb-section-header">
+          <label>References</label>
+          <button onClick={() => handleAllToggle("references", true)}>Select All</button>
+          <button onClick={() => handleAllToggle("references", false)}>Unselect All</button>
+        </div>
+        {cvData.references.map((reference, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={selection.references[index]}
+              onChange={() => handleItemToggle("references", index)}
+            />
+            {reference.name} - {reference.relationship}
+          </label>
+        ))}
+      </div>
+
+      {/* Hobbies */}
+      <div className="cvb-section-block">
+        <div className="cvb-section-header">
+          <label>Hobbies</label>
+          <button onClick={() => handleAllToggle("hobbies", true)}>Select All</button>
+          <button onClick={() => handleAllToggle("hobbies", false)}>Unselect All</button>
+        </div>
+        {cvData.hobbies.map((hobby, index) => (
+          <label key={index}>
+            <input
+              type="checkbox"
+              checked={selection.hobbies[index]}
+              onChange={() => handleItemToggle("hobbies", index)}
+            />
+            {hobby.hobby_name}
           </label>
         ))}
       </div>

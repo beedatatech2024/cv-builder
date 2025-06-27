@@ -4,8 +4,7 @@ import LoginForm from "../../forms/loginForm";
 import { MdClose } from "react-icons/md";
 import PasswordUpdate from "../../forms/PasswordUpdateForm";
 import RegisterForm from "../../forms/registerForm";
-// import { Link } from "react-router-dom";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 import LogoutConfirm from "../LogoutConfirm";
 
 const Navbar = () => {
@@ -16,13 +15,18 @@ const Navbar = () => {
   const [isShowRegisterForm, setIsShowRegisterForm] = useState(false);
   const [openLogoutConfirm, setOpenLogoutConfirm] = useState(false);
 
-  // const token = Cookies.get("jwtToken");
 
-  const handleLoginClick = (role) => {
-    setUserRole(role);
+  const handleLoginClick = () => {
+  const token = Cookies.get("jwtToken");
+
+  if (token) {
+    window.location.href = "/dashboard";
+  }
+  else{
     setShowLogin(true);
     setIsShowUpdatePasswordForm(false);
     setIsShowRegisterForm(false);
+  }
   };
 
   const closePopup = () => {
@@ -38,11 +42,14 @@ const Navbar = () => {
 
   return (
       <nav className="cvb-navbar">
-        <div className="cvb-logo">CV Builder</div>
+        <div onClick={() => window.location.href = "/"} className="cvb-navbar-logo">
+        <img src="/logo.png" className="cvb-navbar-logo-img" alt="CV Builder Logo" />
+        <span className="cvb-navbar-logo-text">Builder</span>
+      </div>
         <div className="cvb-nav-links">
           <a href="#features">Features</a>
           <a href="#how">How It Works</a>
-          <button className="cvb-start-btn" onClick={() => handleLoginClick("Customer")}>Get Started</button>
+          <button className="cvb-start-btn" onClick={handleLoginClick}>Get Started</button>
         </div>
 
       {showLogin && (

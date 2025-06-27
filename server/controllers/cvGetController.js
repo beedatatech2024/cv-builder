@@ -25,7 +25,7 @@ const getCVDetails = async (req, res) => {
       summary: personalRaw?.summary,
       linkedin: personalRaw?.linkedin,
       github: personalRaw?.github,
-      portfolio: personalRaw?.portfolio || "",
+      email: personalRaw?.email || "",
       declaration: personalRaw?.declaration || "",
     };
 
@@ -70,8 +70,9 @@ const getCVDetails = async (req, res) => {
     }));
 
     const extracurricular = extracurricularRaw.map((item) => ({
-      activity_name: item.activity_name,
-      description: item.description,
+      organization: item.organization_name,
+      role: item.role,
+      performance: item.activities_performed,
     }));
 
     const hobbies = hobbiesRaw.map((item) => ({
@@ -130,7 +131,7 @@ const getCVProgress = async (req, res) => {
         "summary",
         "linkedin",
         "github",
-        "portfolio",
+        "email",
         "declaration",
       ];
       const filled = fields.filter(

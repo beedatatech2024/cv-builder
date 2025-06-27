@@ -2,7 +2,9 @@ import { getYear, convertDate } from "../utils/DateModifications";
 import "./styles/CVTemplate.css";
 
 const CVTemplate = ({ cvData }) => {
-  const { personal, education, skills, experience, projects } = cvData;
+  console.log(cvData);
+  
+  const { personal, education, skills, experience, projects, achievements, references, certifications, extracurricular, hobbies } = cvData;
 
   return (
     <>
@@ -44,7 +46,7 @@ const CVTemplate = ({ cvData }) => {
       )}
 
       {/* Education */}
-      {education.length > 0 && (
+      {education && education.length > 0 && (
         <section className="cvb-preview-section">
           <h3>Education</h3>
           {education.map((edu, i) => (
@@ -63,7 +65,7 @@ const CVTemplate = ({ cvData }) => {
       )}
 
       {/* Skills */}
-      {skills.length > 0 && (
+      {skills &&skills.length > 0 && (
         <section className="cvb-preview-section">
           <h3>Skills</h3>
           <ul className="cvb-skill-list">
@@ -77,7 +79,7 @@ const CVTemplate = ({ cvData }) => {
       )}
 
       {/* Experience */}
-      {experience.length > 0 && (
+      {experience && experience.length > 0 && (
         <section className="cvb-preview-section">
           <h3>Experience</h3>
           {experience.map((exp, i) => (
@@ -95,7 +97,7 @@ const CVTemplate = ({ cvData }) => {
       )}
 
       {/* Projects */}
-      {projects.length > 0 && (
+      {projects && projects.length > 0 && (
         <section className="cvb-preview-section">
           <h3>Projects</h3>
           {projects.map((project, i) => (
@@ -107,6 +109,82 @@ const CVTemplate = ({ cvData }) => {
               </a>
             </div>
           ))}
+        </section>
+      )}
+
+      {/* Certifications */}
+      {certifications && certifications.length > 0 && (
+        <section className="cvb-preview-section">
+          <h3>Certifications</h3>
+          <ul>
+            {certifications.map((certification, i) => (
+              <li key={i}>
+                <p><strong>{certification.course_name}</strong> From <strong >{certification.issuing_organization}</strong></p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+
+      {/* Hobbies */}
+      {hobbies && hobbies.length > 0 && (
+        <section className="cvb-preview-section">
+          <h3>Hobbies</h3>
+          <ul>
+            {hobbies.map((hobby, i) => (
+              <li key={i}>
+                <p>{hobby.hobby_name}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      
+
+      {/* Achievements */}
+      {achievements && achievements.length > 0 && (
+        <section className="cvb-preview-section">
+          <h3>Achievements</h3>
+          <ul>
+            {achievements.map((achievement, i) => (
+              <li key={i}>
+                <p><strong>{achievement.title}:</strong> {achievement.description}</p>
+                {achievement.title}
+                </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Extracurricular */}
+      {extracurricular && extracurricular.length > 0 && (
+        <section className="cvb-preview-section">
+          <h3>Extracurricular</h3>
+          <ul>
+            {extracurricular.map((extracurricular, i) => (
+              <li key={i}>
+                <p>As a <strong>{extracurricular.role} </strong> at <strong>{extracurricular.organization}</strong> {extracurricular.performance}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+
+
+      {/* References */}
+      {references && references.length > 0 && (
+        <section className="cvb-preview-section">
+          <h3>References</h3>
+          <ul>
+            {references.map((reference, i) => (
+              <li key={i}>
+                <p><strong>{reference.name}:</strong> {reference.relationship} - {reference.contact_info}</p>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

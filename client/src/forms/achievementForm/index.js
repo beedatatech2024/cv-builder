@@ -1,58 +1,58 @@
 import React, { useState } from 'react';
-import { addProjectsDetails } from '../../api/cvDetailsApi';
 import './index.css';
+import { addAchievementDetails } from '../../api/cvDetailsApi';
 
-const ProjectsForm = ({userId, onClose}) => {
-  const [projects, setProjects] = useState([
+const AchievementsForm = ({userId}) => {
+  const [archivements, setArchivements] = useState([
     {
-      projectTitle: '',
+      title: '',
       description: '',
+      date: '',
       link: '',
     },
   ]);
 
   const handleChange = (index, e) => {
-    const updatedProjects = [...projects];
-    updatedProjects[index][e.target.name] = e.target.value;
-    setProjects(updatedProjects);
+    const updatedArchivement = [...archivements];
+    updatedArchivement[index][e.target.name] = e.target.value;
+    setArchivements(updatedArchivement);
   };
 
   const handleAddProject = () => {
-    setProjects([
-      ...projects,
-      { projectTitle: '', description: '', link: '' },
+    setArchivements([
+      ...archivements,
+      { title: '', description: '', link: '',date:'' },
     ]);
   };
 
   const handleRemoveProject = (index) => {
-    const updatedProjects = projects.filter((_, i) => i !== index);
-    setProjects(updatedProjects);
+    const updatedProjects = archivements.filter((_, i) => i !== index);
+    setArchivements(updatedProjects);
   };
 
   const handleSubmit = async () => {
     try {
-      const response = await addProjectsDetails(userId, projects);
+      const response = await addAchievementDetails(userId, archivements);
       if (response.ok) {
         alert("Projects added successfully!");
-        onClose();
       } else {
         alert(response.message || "Failed to add projects");
       }
     } catch (error) {
-      console.error('Error saving projects:', error);
+      console.error('Error saving projects:', error); 
     }
-    console.log('Submitted projects:', projects);    
+    console.log('Submitted projects:', archivements);    
   };
 
   return (
     <div className="cvb-edu-form-container">
-      <h2 className="cvb-edu-form-title">Projects</h2>
+      <h2 className="cvb-edu-form-title">Achievements</h2>
       <form className="cvb-edu-form">
-        {projects.map((project, index) => (
+        {archivements.map((archivement, index) => (
           <div key={index} className="cvb-edu-form-block">
             <div className="cvb-edu-form-block-header">
-              <h4 className="cvb-edu-form-block-title">Project {index + 1}</h4>
-              {projects.length > 1 && (
+              <h4 className="cvb-edu-form-block-title">Award {index +1}</h4>
+              {archivements.length > 1 && (
                 <button
                   type="button"
                   className="cvb-edu-remove-btn"
@@ -64,53 +64,61 @@ const ProjectsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Project Title</label>
+              <label>Title</label>
               <input
                 type="text"
-                name="projectTitle"
-                placeholder="Enter project title"
-                value={project.projectTitle}
+                name="title"
+                placeholder="Enter award title"
+                value={archivements.title}
                 onChange={(e) => handleChange(index, e)}
                 required
               />
-            </div>
-
-            <div className="cvb-edu-form-group">
+              <div className="cvb-edu-form-group">
               <label>Description</label>
               <textarea
                 name="description"
-                placeholder="Enter project description"
-                value={project.description}
+                placeholder="Enter Academic Award Hackathon Win Scholarship Publication"
+                value={archivements.description}
                 onChange={(e) => handleChange(index, e)}
                 rows="4"
                 required
               />
             </div>
-
+            </div>
             <div className="cvb-edu-form-group">
-              <label>Project Link</label>
+              <label>Achievement Date</label>
+              <input
+                type="date"
+                name="date"
+                placeholder="Enter date"
+                value={archivements.date}
+                onChange={(e) => handleChange(index, e)}
+                required
+              />
+            </div>
+            <div className="cvb-edu-form-group">
+              <label>Link</label>
               <input
                 type="url"
                 name="link"
                 placeholder="https://your-project-link.com"
-                value={project.link}
-                onChange={(e) => handleChange(index, e)}
+                value={archivements.link}
+                onChange={(e) => handleChange(index, e)}  
               />
             </div>
-
             <hr className="cvb-edu-divider" />
           </div>
         ))}
 
         <button type="button" className="cvb-edu-add-btn" onClick={handleAddProject}>
-          ➕ Add New Project
+          ➕ Add New Achievements
         </button>
       </form>
       <button type="button" onClick={handleSubmit} className="cvb-edu-submit-btn">
-          Save Projects
+          Save Achievements
         </button>
     </div>
   );
 };
 
-export default ProjectsForm;
+export default AchievementsForm;

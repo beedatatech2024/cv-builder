@@ -44,7 +44,7 @@ const LoginForm = ({ isPopupOpen, closePopup, role }) => {
 
   return (
     <>
-      <h2 className="cvb-login-heading">Welcome to User</h2>
+      <h2 className="cvb-login-heading">Welcome to User</h2>  
       <form className="cvb-login-form" onSubmit={handleSubmit}>
         <label className="cvb-login-label">Email</label>
         <input

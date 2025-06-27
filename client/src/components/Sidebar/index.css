@@ -5,6 +5,7 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  transition: width 0.3s ease;
 }
 
 .cvb-sidebar-logo {
@@ -14,39 +15,109 @@
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
-.cvb-sidebar-logo-img{
+.cvb-sidebar-logo-img {
   width: 40px;
-  height: auto;
   margin-right: 0.5rem;
 }
 
+.cvb-sidebar-logo-text {
+  display: inline;
+}
+
+.cvb-sidebar-nav {
+  flex-grow: 1;
+}
+
 .cvb-sidebar-nav-link {
-  display: block;
+  display: flex;
+  align-items: center;
   margin: 1rem 0;
   color: #333;
   font-weight: 500;
   text-decoration: none;
   transition: 0.3s;
+  font-size: 1rem;
 }
 
 .cvb-sidebar-nav-link:hover {
   color: #4a00e0;
 }
 
-.cvb-sidebar-nav-logout-button{
+.cvb-sidebar-icon {
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+}
+
+.cvb-sidebar-label {
+  display: inline;
+}
+
+.cvb-sidebar-nav-logout-button {
   background: linear-gradient(90deg, #8e2de2, #4a00e0);
   color: #fff;
   border: none;
   padding: 0.6rem 1.2rem;
+  text-align: center;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
   margin-top: auto;
+  font-size: 1rem;
 }
 
+.cvb-sidebar-nav-logout-button .cvb-sidebar-icon {
+  margin-right: 0.6rem;
+}
 
+/* Responsive Design - Mobile View (only icons) */
+@media (max-width: 768px) {
+  .cvb-sidebar {
+    width: 50px;
+    padding: 0.5rem;
+    align-items: center;
+  }
 
+  .cvb-sidebar-logo {
+  margin-bottom: 0.5rem;
+ 
+}
+  
 
+  .cvb-sidebar-logo-text,
+  .cvb-sidebar-label {
+    display: none;
+  }
+
+  .cvb-sidebar-nav{
+    padding: 0%;
+  }
+
+  .cvb-sidebar-logo-img {
+    margin-right: 0;
+  }
+   .cvb-sidebar-progress-wrapper {
+    display: none;
+  }
+
+  .cvb-sidebar-nav-link,
+  .cvb-sidebar-nav-logout-button {
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.5rem 0.5rem;
+    padding-left: auto;
+  }
+
+  .cvb-progress-bar {
+    display: none;
+  }
+
+  .cvb-sidebar-icon {
+    margin: 0;
+  }
+}

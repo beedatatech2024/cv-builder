@@ -3,12 +3,12 @@ const bcrypt = require('bcryptjs');
 
 const cv = { 
     addPersonalDetails: (userId, personalDetails) => {
-        const { fullName, phone, address, summary, linkedin, github, portfolio, declaration } = personalDetails;
+        const { fullName, phone, address, summary, linkedin, github, email, declaration } = personalDetails;
         return new Promise((resolve, reject) => {
             db.query(
-                `INSERT INTO personal_info (user_id, full_name, phone, address, summary, linkedin, github, portfolio, declaration)
+                `INSERT INTO personal_info (user_id, full_name, phone, address, summary, linkedin, github, email, declaration)
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                [userId, fullName, phone, address, summary, linkedin, github, portfolio, declaration],
+                [userId, fullName, phone, address, summary, linkedin, github, email, declaration],
                 (err, result) => {
                     if (err) reject(err);
                     resolve(result);
@@ -99,9 +99,12 @@ const cv = {
     },
 
     addAchievements: (userId, achievements) => {
+        console.log(achievements);
+        const type = "Academic Award"
+        
         return new Promise((resolve, reject) => {
             const values = achievements.map(achievement => [
-                userId, achievement.title, achievement.description, achievement.type, achievement.achievementDate, achievement.link
+                userId, achievement.title, achievement.description, type, achievement.date, achievement.link
             ]);
             db.query(
                 `INSERT INTO achievements (user_id, title, description, type, achievement_date, link)
@@ -139,7 +142,7 @@ const cv = {
                 userId, reference.name, reference.relationship, reference.contactInfo, reference.designation
             ]);
             db.query(
-                `INSERT INTO refferences_info (user_id, name, relationship, contact_info, designation)
+                `INSERT INTO references_info (user_id, name, relationship, contact_info, designation)
                  VALUES ?`,
                 [values],
                 (err, result) => {
