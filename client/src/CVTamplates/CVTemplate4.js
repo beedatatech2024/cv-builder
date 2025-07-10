@@ -25,7 +25,7 @@ const CVTemplate4 = ({ cvData }) => {
             <p className="cvb-first-contact-item">Tel: {personal.phone}</p>
             <p className="cvb-first-contact-item">
               {" "}
-              {personal.email || "kalingaramarao181@gmail.com"}
+              {personal.email}
             </p>
             <p className="cvb-first-contact-item">{personal.linkedin}</p>
           </div>
@@ -88,7 +88,7 @@ const CVTemplate4 = ({ cvData }) => {
 
       <div className="cvb-first-main-content">
         {personal && <h1 className="cvb-first-name">{personal.fullName}</h1>}
-        {experience && (
+        {experience && experience.length > 0 && (
           <h2 className="cvb-first-role">{experience[0].job_title}</h2>
         )}
 

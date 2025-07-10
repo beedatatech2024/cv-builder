@@ -6,7 +6,7 @@ const addPersonalDetails = async (req, res) => {
     const { fullName, phone, address, summary, linkedin, github } = req.body;
     const userId = req.params.userId;
 
-    if (!fullName || !phone || !address || !summary || !linkedin || !github) {
+    if (!fullName || !phone || !address || !summary) {
       return res.status(400).json({ message: "All fields are required" });
     }
 

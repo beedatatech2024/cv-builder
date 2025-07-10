@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Secure from "./components/Secure";
 import UserDashboard from "./pages/userDashboard";
 import CVTemplate1 from "./CVTamplates/CVTemplate1";
+import InterviewPage from "./InterviewPage";
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/in" element={<InterviewPage />} />
         <Route element={<Secure />}>
           <Route path="/dashboard/*" element={<UserDashboard />} />
         </Route>

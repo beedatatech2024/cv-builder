@@ -56,7 +56,7 @@ const SkillsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Skill Name</label>
+              <label>Skill Name <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="skill_name"
@@ -68,7 +68,7 @@ const SkillsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Proficiency Level</label>
+              <label>Proficiency Level <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="level"

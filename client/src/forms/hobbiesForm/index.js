@@ -62,7 +62,7 @@ const HobbiesForm = ({userId}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Hobbie Name</label>
+              <label>Hobbie Name <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="hobbyName"
@@ -73,7 +73,7 @@ const HobbiesForm = ({userId}) => {
               />
             </div>
             <div className="cvb-edu-form-group">
-              <label>Description</label>
+              <label>Description <span className='cvb-edu-mandatory'>*</span></label>
               <textarea
                 name="description"
                 placeholder="Enter project description"

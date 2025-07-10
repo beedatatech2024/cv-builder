@@ -10,7 +10,7 @@ const LogoutConfirm = ({ onClose }) => {
     return (
         <div className="logout-popup-overlay">
             <div className="logout-popup-content">
-                <h3 className="logout-popup-title">Are You Sure You Want to Logout</h3>
+                <h3 className="logout-popup-title">Are You Sure You Want to Logout?</h3>
 
                 <div className="logout-popup-buttons">
                     <button onClick={onClose} className="logout-cancel-btn">Cancel</button>

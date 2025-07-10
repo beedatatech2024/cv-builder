@@ -67,7 +67,7 @@ const ReferenceForm = ({ userId }) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Reference Name</label>
+              <label>Reference Name <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="name"
@@ -79,7 +79,7 @@ const ReferenceForm = ({ userId }) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Relationship</label>
+              <label>Relationship <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="relationship"
@@ -91,7 +91,7 @@ const ReferenceForm = ({ userId }) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Contact</label>
+              <label>Contact <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="contactInfo"
@@ -103,7 +103,7 @@ const ReferenceForm = ({ userId }) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Designation</label>
+              <label>Designation <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="designation"

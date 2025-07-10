@@ -66,7 +66,7 @@ const ExperienceForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Company Name</label>
+              <label>Company Name <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="companyName"
@@ -78,7 +78,7 @@ const ExperienceForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Job Title</label>
+              <label>Job Title <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="jobTitle"
@@ -91,7 +91,7 @@ const ExperienceForm = ({userId, onClose}) => {
 
             <div className="cvb-edu-form-row">
               <div className="cvb-edu-form-group">
-                <label>Start Date</label>
+                <label>Start Date <span className='cvb-edu-mandatory'>*</span></label>
                 <input
                   type="date"
                   name="startDate"
@@ -101,7 +101,7 @@ const ExperienceForm = ({userId, onClose}) => {
                 />
               </div>
               <div className="cvb-edu-form-group">
-                <label>End Date</label>
+                <label>End Date <span className='cvb-edu-mandatory'>*</span></label>
                 <input
                   type="date"
                   name="endDate"
@@ -113,7 +113,7 @@ const ExperienceForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Description</label>
+              <label>Description <span className='cvb-edu-mandatory'>*</span></label>
               <textarea
                 name="description"
                 placeholder="Describe your role and responsibilities"

@@ -76,7 +76,7 @@ const sendOtp = async (req, res) => {
 
 const sendResetOtp = async (req, res) => {
   const { email } = req.body;
-  if (!email) return res.status(400).json({ message: "Email is required" });
+  if (!email) return res.status(400).json({ message: "Email is required" });    
 
   try {
     const userData = await User.findByEmail(email);
@@ -148,12 +148,14 @@ const verifyResetOtp = async (req, res) => {
 const resetPassword = async (req, res) => {
 
   const { resetToken, newPassword } = req.body;
-  console.log("Reset Password Token:", resetToken);
   if (!resetToken || !newPassword)
     return res.status(400).json({ message: "All fields required" });
   try {
     const decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
     const hashedPassword = await bcrypt.hash(newPassword, 10);
+    console.log("New Password:", newPassword);
+    console.log("Hashed Password:", hashedPassword);
+    
 
     await User.updateUserPassword(decoded.email, hashedPassword);
     res.json({ message: "Password updated successfully" });

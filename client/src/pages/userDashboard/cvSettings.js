@@ -18,7 +18,7 @@ const Settings = ({ cvData }) => {
               Name: {personal.fullName}
             </p>
             <p className="cvb-settings-section-field">
-              Email: {personal.email || "kalingaramarao181@gmail.com"}
+              Email: {personal.email}
             </p>
             <p className="cvb-settings-section-field">
               Phone: {personal.phone}

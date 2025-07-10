@@ -57,7 +57,7 @@ const EducationDetailsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>School / University</label>
+              <label>School / University<span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="institution"
@@ -69,7 +69,7 @@ const EducationDetailsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Degree</label>
+              <label>Degree<span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="degree"
@@ -81,7 +81,7 @@ const EducationDetailsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Field of Study</label>
+              <label>Field of Study<span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="field"
@@ -93,7 +93,7 @@ const EducationDetailsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Percentage / CGPA</label>
+              <label>Percentage / CGPA<span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="percentage"
@@ -106,7 +106,7 @@ const EducationDetailsForm = ({userId, onClose}) => {
 
             <div className="cvb-edu-form-row">
               <div className="cvb-edu-form-group">
-                <label>Start Date</label>
+                <label>Start Date<span className='cvb-edu-mandatory'>*</span></label>
                 <input
                   type="date"
                   name="startDate"
@@ -116,7 +116,7 @@ const EducationDetailsForm = ({userId, onClose}) => {
                 />
               </div>
               <div className="cvb-edu-form-group">
-                <label>End Date</label>
+                <label>End Date<span className='cvb-edu-mandatory'>*</span></label>
                 <input
                   type="date"
                   name="endDate"

@@ -18,7 +18,7 @@ router.post('/cv/references/:userId', addRefferencesInfoDetails);
 router.post('/cv/hobbies/:userId', addHobbiesDetails);
 
 //GET REQUESTS
-router.get('/cv/:userId', protect, getCVDetails);
+router.get('/cv/:userId', getCVDetails);
 router.get('/cv/progress/:userId', protect, getCVProgress);
 
 

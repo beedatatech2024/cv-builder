@@ -116,7 +116,7 @@ const RegisterForm = ({ isPopupOpen, closePopup }) => {
         className="cvb-login-form"
         onSubmit={!isOtpSent ? handleSendOtp : handleVerifyOtp}
       >
-        <label className="cvb-login-label">Name</label>
+        <label className="cvb-login-label">Full Name <span className='cvb-edu-mandatory'>*</span></label>
         <input
           type="text"
           className="cvb-login-input"
@@ -125,7 +125,7 @@ const RegisterForm = ({ isPopupOpen, closePopup }) => {
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           required
         />
-        <label className="cvb-login-label">Email</label>
+        <label className="cvb-login-label">Email <span className='cvb-edu-mandatory'>*</span></label>
         <input
           type="email"
           className="cvb-login-input"
@@ -134,7 +134,7 @@ const RegisterForm = ({ isPopupOpen, closePopup }) => {
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           required
         />
-        <label className="cvb-login-label">Password</label>
+        <label className="cvb-login-label">Password <span className='cvb-edu-mandatory'>*</span></label>
         <input
           type="password"
           className="cvb-login-input"
@@ -145,7 +145,7 @@ const RegisterForm = ({ isPopupOpen, closePopup }) => {
           }
           required
         />
-        <label className="cvb-login-label">Confirm Password</label>
+        <label className="cvb-login-label">Confirm Password <span className='cvb-edu-mandatory'>*</span></label>
         <input
           type="password"
           className="cvb-login-input"

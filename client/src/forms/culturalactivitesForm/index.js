@@ -65,7 +65,7 @@ const ExtraCulturalForm = ({userId}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Organization Name</label>
+              <label>Organization Name <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="organizationName"
@@ -76,7 +76,7 @@ const ExtraCulturalForm = ({userId}) => {
               />
             </div>
             <div className="cvb-edu-form-group">
-              <label>Role</label>
+              <label>Role <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="role"
@@ -87,7 +87,7 @@ const ExtraCulturalForm = ({userId}) => {
               />
             </div>
             <div className="cvb-edu-form-group">
-              <label>Strating Date</label>
+              <label>Strating Date <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="date"
                 name="startDate"
@@ -98,7 +98,7 @@ const ExtraCulturalForm = ({userId}) => {
               />
             </div>
             <div className="cvb-edu-form-group">
-              <label>Ending Date</label>
+              <label>Ending Date <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="date"
                 name="endDate"
@@ -110,7 +110,7 @@ const ExtraCulturalForm = ({userId}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Activities Performed</label>
+              <label>Activities Performed <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="activitiesPerformed"

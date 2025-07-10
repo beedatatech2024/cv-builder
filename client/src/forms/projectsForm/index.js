@@ -64,7 +64,7 @@ const ProjectsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Project Title</label>
+              <label>Project Title <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="projectTitle"
@@ -76,7 +76,7 @@ const ProjectsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Description</label>
+              <label>Description <span className='cvb-edu-mandatory'>*</span></label>
               <textarea
                 name="description"
                 placeholder="Enter project description"
@@ -88,7 +88,7 @@ const ProjectsForm = ({userId, onClose}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Project Link</label>
+              <label>Project Link <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="url"
                 name="link"

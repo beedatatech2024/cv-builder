@@ -42,7 +42,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
       <h2 className="cvb-edu-form-title">Personal Information</h2>
       <form className="cvb-edu-form" onSubmit={handleSubmit}>
         <div className="cvb-edu-form-group">
-          <label>Full Name</label>
+          <label>Full Name <span className='cvb-edu-mandatory'>*</span></label>
           <input
             type="text"
             name="fullName"
@@ -54,7 +54,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
         </div>
 
         <div className="cvb-edu-form-group">
-          <label>Phone Number</label>
+          <label>Phone Number<span className='cvb-edu-mandatory'>*</span></label>
           <input
             type="tel"
             name="phone"
@@ -66,7 +66,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
         </div>
 
         <div className="cvb-edu-form-group">
-          <label>Email</label>
+          <label>Email<span className='cvb-edu-mandatory'>*</span></label>
           <input
             type="url"
             name="email"
@@ -77,7 +77,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
         </div>
 
         <div className="cvb-edu-form-group">
-          <label>Address</label>
+          <label>Address<span className='cvb-edu-mandatory'>*</span></label>
           <input
             type="text"
             name="address"
@@ -90,7 +90,7 @@ const PersonalInfoForm = ({userId, onClose}) => {
         
 
         <div className="cvb-edu-form-group">
-          <label>Summary</label>
+          <label>Summary<span className='cvb-edu-mandatory'>*</span></label>
           <textarea
             name="summary"
             placeholder="Write a short summary about yourself"

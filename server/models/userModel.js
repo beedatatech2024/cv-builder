@@ -33,7 +33,7 @@ const User = {
                 }
             );
         });
-    },
+    },  
 
     findEmailById: (userId) => {
         return new Promise((resolve, reject) => {
@@ -73,11 +73,14 @@ const User = {
     },
     
     updateUserPassword: (email, newPassword) => {
-        const hashedPassword = bcrypt.hashSync(newPassword, 10);
+        console.log("Updating password for email:", email);
+        console.log("Updated Password New:", newPassword);
+        
+        
         return new Promise((resolve, reject) => {
             db.query(
                 `UPDATE users SET password = ? WHERE email = ?`,
-                [hashedPassword, email],
+                [newPassword, email],
                 (err, result) => {
                     if (err) reject(err);
                     resolve(result);

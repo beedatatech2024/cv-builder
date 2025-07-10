@@ -35,6 +35,7 @@ const AchievementsForm = ({userId}) => {
       const response = await addAchievementDetails(userId, archivements);
       if (response.ok) {
         alert("Projects added successfully!");
+        window.location.reload();
       } else {
         alert(response.message || "Failed to add projects");
       }
@@ -64,7 +65,7 @@ const AchievementsForm = ({userId}) => {
             </div>
 
             <div className="cvb-edu-form-group">
-              <label>Title</label>
+              <label>Title <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="text"
                 name="title"
@@ -74,7 +75,7 @@ const AchievementsForm = ({userId}) => {
                 required
               />
               <div className="cvb-edu-form-group">
-              <label>Description</label>
+              <label>Description <span className='cvb-edu-mandatory'>*</span></label>
               <textarea
                 name="description"
                 placeholder="Enter Academic Award Hackathon Win Scholarship Publication"
@@ -86,7 +87,7 @@ const AchievementsForm = ({userId}) => {
             </div>
             </div>
             <div className="cvb-edu-form-group">
-              <label>Achievement Date</label>
+              <label>Achievement Date <span className='cvb-edu-mandatory'>*</span></label>
               <input
                 type="date"
                 name="date"

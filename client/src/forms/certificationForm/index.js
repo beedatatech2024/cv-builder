@@ -68,7 +68,7 @@ const CertificationForm = ({ userId, onClose }) => {
                         </div>
 
                         <div className="cvb-edu-form-group">
-                            <label>Course Name</label>
+                            <label>Course Name <span className='cvb-edu-mandatory'>*</span></label>
                             <input
                                 type="text"
                                 name="courseName"
@@ -79,7 +79,7 @@ const CertificationForm = ({ userId, onClose }) => {
                             />
                         </div>
                         <div className="cvb-edu-form-group">
-                            <label>Date of Completion</label>
+                            <label>Date of Completion <span className='cvb-edu-mandatory'>*</span></label>
                             <input
                                 type="date"
                                 name="dateOfCompletion"
@@ -89,7 +89,7 @@ const CertificationForm = ({ userId, onClose }) => {
                             />
                         </div>
                          <div className="cvb-edu-form-group">
-                            <label>Issuing Organization</label>
+                            <label>Issuing Organization <span className='cvb-edu-mandatory'>*</span></label>
                             <textarea
                                 name="issuingOrganization"
                                 placeholder="Enter Course description"

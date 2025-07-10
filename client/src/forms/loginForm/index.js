@@ -46,7 +46,7 @@ const LoginForm = ({ isPopupOpen, closePopup, role }) => {
     <>
       <h2 className="cvb-login-heading">Welcome to User</h2>  
       <form className="cvb-login-form" onSubmit={handleSubmit}>
-        <label className="cvb-login-label">Email</label>
+        <label className="cvb-login-label">Email <span className='cvb-edu-mandatory'>*</span></label>
         <input
           type="email"
           className="cvb-login-input"
@@ -55,7 +55,7 @@ const LoginForm = ({ isPopupOpen, closePopup, role }) => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label className="cvb-login-label">Password</label>
+        <label className="cvb-login-label">Password <span className='cvb-edu-mandatory'>*</span></label>
         <input
           type="password"
           className="cvb-login-input"

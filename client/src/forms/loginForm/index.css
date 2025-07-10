@@ -92,6 +92,11 @@
     color: red;
   }
 
+  .cvb-edu-mandatory{
+    color: red;
+    font-size: 0.8rem;
+    margin-left: 2px;
+  }
 
   @media (max-width: 768px) {
   .cvb-login-heading {

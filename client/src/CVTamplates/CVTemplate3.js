@@ -20,7 +20,7 @@ const CVTemplate3 = ({ cvData }) => {
     <div className="cvb-william-resume">
       {personal && (
         <div className="cvb-william-header">
-          {experience && (
+          {experience && experience.length > 0 && (
             <h3 className="cvb-william-position">{experience[0].job_title}</h3>
           )}
           <h1 className="cvb-william-name">{personal.fullName}</h1>
@@ -30,7 +30,7 @@ const CVTemplate3 = ({ cvData }) => {
               <strong>EMAIL</strong>
               <br />
               <span className="cvb-william-contact-value">
-                {personal.email || "kalingaramarao181@gmail.com"}
+                {personal.email}
               </span>
             </p>
             <p className="cvb-william-contact-item">
